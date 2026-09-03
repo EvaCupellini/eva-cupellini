@@ -1,0 +1,3009 @@
+/* ================================
+   RESET
+================================ */
+
+* {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  body {
+    background: #d1cdcd;
+    color: #111111;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    overflow: hidden;
+  }
+  
+  
+  
+  /* ================================
+     MAIN LAYOUT
+     67% PROJECTS / 33% ABOUT
+  ================================ */
+  
+  .site {
+    width: 100%;
+    height: 100vh;
+  
+    display: grid;
+    grid-template-columns: 67% 33%;
+  }
+  
+  /* ================================
+   PROJECT OPEN — FULL PAGE
+  ================================ */
+  
+  .site:has(.project.open) {
+    grid-template-columns: 100% 0%;
+  }
+  
+  .site:has(.project.open) .about-column {
+    display: none;
+  }
+  
+  .site:has(.project.open) .projects-column {
+    width: 100%;
+    padding-right: 3.2vw;
+  }
+  
+  /* ================================
+   PROJECT OPEN — PAGE SCROLL
+   Lo scroll è della pagina intera,
+   NON della galleria
+  ================================ */
+  
+  body:has(.project.open) {
+  overflow-x: hidden;
+  overflow-y: auto;
+  }
+  
+  .site:has(.project.open) {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 100% 0%;
+  align-items: start;
+  }
+  
+  .site:has(.project.open) .projects-column {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  
+  overflow: visible;
+  
+  padding-right: 3.2vw;
+  }
+  
+  /* Mantiene la posizione/larghezza originale dei dati
+   del progetto */
+  
+  .site:has(.project.open) .project-meta {
+  width: 67%;
+  }
+  
+  /* ================================
+   VESUVIO SPONTANEO — PAGE HEIGHT
+   Più spazio sotto le informazioni
+  ================================ */
+  
+  body:has(.project-vesuvio-spontaneo.open) {
+  min-height: 120vh;
+  }
+  
+  .site:has(.project-vesuvio-spontaneo.open) {
+  min-height: 120vh;
+  }
+  
+  .site:has(.project-vesuvio-spontaneo.open) .projects-column {
+  min-height: 120vh;
+  padding-bottom: 120px;
+  }
+  
+  
+  /* ================================
+     LEFT — PROJECTS
+  ================================ */
+  
+  .projects-column {
+    width: 100%;
+    height: 100vh;
+  
+    overflow: hidden;
+  
+    padding-top: 22px;
+    padding-left: 3.2vw;
+    padding-right: 1vw;
+    padding-bottom: 40px;
+  
+    scrollbar-width: none;
+  }
+  
+  .projects-column::-webkit-scrollbar {
+    display: none;
+  }
+  
+  
+  /* ================================
+     LOGO
+  ================================ */
+  
+  .site-header {
+    width: 100%;
+    height: 80px;
+  
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    display: inline-block;
+    color: #8b2ca1;
+  
+    font-family: Georgia, "Times New Roman", serif;
+  
+    font-size: 32px;
+    line-height: 1;
+  
+    text-decoration: none;
+  
+    margin-top: 2px;
+    transition: scale 0.12s ease;
+  }
+  
+  .logo:active {
+    scale: 0.92;
+  }
+  
+  
+  
+  /* ================================
+     PROJECT LIST
+  ================================ */
+  
+  .projects-list {
+    width: 100%;
+  }
+  
+  
+  /* ================================
+     SINGLE PROJECT
+  ================================ */
+  
+  .project {
+    width: 100%;
+  
+    position: relative;
+  
+    margin-bottom: 12px;
+  }
+  
+  
+  /* ================================
+     PROJECT TITLE / TYPE / YEAR
+  ================================ */
+  
+  .project-meta {
+    width: 100%;
+  
+    display: grid;
+  
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(130px, 1fr)
+      42px;
+  
+    column-gap: 8px;
+  
+    align-items: baseline;
+  
+    margin-bottom: 5px;
+  
+    line-height: 1;
+  }
+  
+  .project-title {
+    color: #111111;
+    font-size: 15px;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  
+  .project-title:hover {
+    color: #8b2ca1;
+  }
+  
+  .project-type {
+    font-size: 15px;
+  }
+  
+  .project-year {
+    font-size: 15px;
+  
+    text-align: right;
+  
+    white-space: nowrap;
+  }
+  
+  
+  /* ================================
+     PROJECT IMAGES
+  ================================ */
+  
+  .project-images {
+    width: 100%;
+  
+    display: flex;
+  
+    gap: 3px;
+  
+    overflow: hidden;
+  
+    scrollbar-width: none;
+  
+    padding-bottom: 2px;
+  
+    transition: all 0.4s ease;
+  }
+  
+  .project-images::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* ================================
+   coevo — IMMAGINI INIZIALI 
+  ================================ */
+  .coevo-01-container {
+  overflow: hidden;
+  position: relative;
+  }
+  .coevo-01-container img {
+  position: absolute;
+  width: 45px !important;
+  height: auto !important;
+  left: 10px;
+  top: -19px;
+  }
+  
+  .coevo-05-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  .coevo-05-container img {
+  position: absolute;
+  width: 55px !important;
+  height: auto !important;
+  left: 5px;
+  top: 1.5px;
+  }
+  
+  .coevo-06-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  .coevo-06-container img {
+  position: absolute;
+  width: 57px !important;
+  height: auto !important;
+  left: 5px;
+  top: 0.1px;
+  }
+  
+  .coevo-07-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  .coevo-07-container img {
+  position: absolute;
+  width: 57px !important;
+  height: auto !important;
+  left: 5px;
+  top: 0.1px;
+  }
+  
+  .coevo-08-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  .coevo-08-container img {
+  position: absolute;
+  width: 57px !important;
+  height: auto !important;
+  left: 5px;
+  top: 0.1px;
+  }
+  
+  .coevo-09-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .coevo-09-container img {
+  position: absolute;
+  width: 55px !important;
+  height: auto !important;
+  left: 6px;
+  top: 0.5px;
+  }
+  
+  .coevo-10-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .coevo-10-container img {
+  position: absolute;
+  width: 58px !important;
+  height: auto !important;
+  left: 4px;
+  top: 0.1px;
+  }
+  
+  .coevo-11-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .coevo-11-container img {
+  position: absolute;
+  width: 56px !important;
+  height: auto !important;
+  left: 6px;
+  top: 0.1px;
+  }
+  
+  .coevo-12-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .coevo-12-container img {
+  position: absolute;
+  width: 56px !important;
+  height: auto !important;
+  left: 6px;
+  top: 0.1px;
+  }
+  
+  .coevo-13-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .coevo-13-container img {
+  position: absolute;
+  width: 56px !important;
+  height: auto !important;
+  left: 6px;
+  top: 0.1px;
+  }
+  
+  /* ================================
+   tokyo demons — IMMAGINI INIZIALI 
+  ================================ */
+  .tokyo-demons-01-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 60% !important;
+  }
+  
+  .tokyo-demons-02-container {
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .tokyo-demons-02-container img {
+  position: absolute;
+  width: 58px !important;
+  height: auto !important;
+  left: 4px;
+  top: 5px;
+  }
+  
+  .tokyo-demons-03-container {
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .tokyo-demons-03-container img {
+  position: absolute;
+  width: 58px !important;
+  height: auto !important;
+  left: 4px;
+  top: 5px;
+  }
+  
+  .tokyo-demons-04-container {
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .tokyo-demons-04-container img {
+  position: absolute;
+  width: 58px !important;
+  height: auto !important;
+  left: 4px;
+  top: 5px;
+  }
+  
+  .tokyo-demons-05-container {
+  background-color: #ffffff;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .tokyo-demons-05-container img {
+  position: absolute;
+  width: 58px !important;
+  height: auto !important;
+  left: 4px;
+  top: 5px;
+  }
+  
+  .tokyo-demons-06-container {
+  background-color: #ffffff;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .tokyo-demons-06-container img {
+  position: absolute;
+  width: 58px !important;
+  height: auto !important;
+  left: 4px;
+  top: 5px;
+  }
+  
+  .tokyo-demons-07-container {
+  background-color: #ffffff;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .tokyo-demons-07-container img {
+  position: absolute;
+  width: 58px !important;
+  height: auto !important;
+  left: 4px;
+  top: 5px;
+  }
+  
+  .tokyo-demons-08-container {
+  background-color: #ffffff;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .tokyo-demons-08-container img {
+  position: absolute;
+  width: 58px !important;
+  height: auto !important;
+  left: 4px;
+  top: 5px;
+  }
+  
+  .tokyo-demons-09-container {
+  background-color: #ffffff;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .tokyo-demons-09-container img {
+  position: absolute;
+  width: 58px !important;
+  height: auto !important;
+  left: 4px;
+  top: 5px;
+  }
+  
+  .tokyo-demons-10-container {
+  background-color: #ffffff;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .tokyo-demons-10-container img {
+  position: absolute;
+  width: 58px !important;
+  height: auto !important;
+  left: 4px;
+  top: 5px;
+  }
+  
+  .tokyo-demons-11-container {
+  background-color: #ffffff;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .tokyo-demons-11-container img {
+  position: absolute;
+  width: 58px !important;
+  height: auto !important;
+  left: 4px;
+  top: 5px;
+  }
+  
+  .tokyo-demons-12-container {
+  background-color: #ffffff;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .tokyo-demons-12-container img {
+  position: absolute;
+  width: 58px !important;
+  height: auto !important;
+  left: 4px;
+  top: 5px;
+  }
+  
+  .tokyo-demons-13-container {
+  background-color: #ffffff;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .tokyo-demons-13-container img {
+  position: absolute;
+  width: 58px !important;
+  height: auto !important;
+  left: 4px;
+  top: 5px;
+  }
+  
+  
+  /* ================================
+   ANGELICA — IMMAGINI INIZIALI 
+  ================================ */
+  .angelica-01-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 86% !important;
+  }
+  
+  .angelica-02-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 60% !important;
+  }
+  
+  .angelica-03-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 50% !important;
+  }
+  
+  .angelica-04-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 70% !important;
+  }
+  
+  .angelica-05-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 0% !important;
+  }
+  
+  .angelica-06-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 68% !important;
+  }
+  
+  .angelica-09-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 90% !important;
+  }
+  
+  .angelica-10-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 30% !important;
+  }
+  
+  .angelica-12-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 90% !important;
+  }
+  
+  .angelica-13-container {
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .angelica-13-container img {
+  position: absolute;
+  width: 68px !important;
+  height: auto !important;
+  left: -3.8px;
+  top: -52px;
+  }
+  
+  /* ================================
+   a tiny playground — IMMAGINI INIZIALI 
+  ================================ */
+  .a-tiny-playground-07-container video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  }
+  
+  .a-tiny-playground-09-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .a-tiny-playground-09-container img {
+  position: absolute;
+  width: 25px !important;
+  height: auto !important;
+  left: 20px;
+  top: 2px;
+  }
+  
+  .a-tiny-playground-10-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .a-tiny-playground-10-container img {
+  position: absolute;
+  width: 25px !important;
+  height: auto !important;
+  left: 20px;
+  top: 2px;
+  }
+  
+  .a-tiny-playground-11-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .a-tiny-playground-11-container img {
+  position: absolute;
+  width: 25px !important;
+  height: auto !important;
+  left: 20px;
+  top: 2px;
+  }
+  
+  .a-tiny-playground-12-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .a-tiny-playground-12-container img {
+  position: absolute;
+  width: 25px !important;
+  height: auto !important;
+  left: 20px;
+  top: 2px;
+  }
+  
+  .a-tiny-playground-13-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  
+  .a-tiny-playground-13-container img {
+  position: absolute;
+  width: 25px !important;
+  height: auto !important;
+  left: 20px;
+  top: 2px;
+  }
+  
+  /* ================================
+   kuchidoke — IMMAGINI INIZIALI 
+  ================================ */
+  
+  .kuchidoke-01-container {
+  overflow: hidden;
+  position: relative; 
+  }
+  .kuchidoke-01-container video {
+  position: absolute;
+  width: 68px !important;
+  height: auto !important;
+  left: -1px;
+  top: -10px;
+  }
+  
+  .kuchidoke-02-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  .kuchidoke-02-container video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  }
+  
+  .kuchidoke-03-container {
+  background: #000!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  .kuchidoke-03-container video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  }
+  
+  .kuchidoke-04-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 90% !important;
+  }
+  
+  .kuchidoke-05-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 10% !important;
+  }
+  
+  .kuchidoke-07-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 100% !important;
+  }
+  
+  .kuchidoke-09-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 80% !important;
+  }
+  
+  .kuchidoke-12-container {
+  overflow: hidden;
+  position: relative; 
+  }
+  .kuchidoke-12-container img {
+  position: absolute;
+  width: 150px !important;
+  height: auto !important;
+  left: -40px;
+  top: -25px;
+  }
+  
+  /* ================================
+   kirinoki — IMMAGINI INIZIALI 
+  ================================ */
+  
+  .kirinoki-02-container {
+  background: #ffffff!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  .kirinoki-02-container img {
+  position: absolute;
+  width: 38px !important;
+  height: auto !important;
+  left: 15px;
+  top: 1px;
+  }
+  
+  .kirinoki-03-container {
+  overflow: hidden;
+  position: relative; 
+  }
+  .kirinoki-03-container img {
+  position: absolute;
+  width: 70px !important;
+  height: auto !important;
+  left: -1px;
+  top: -15px;
+  }
+  
+  .kirinoki-09-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 70% !important;
+  }
+  
+  .kirinoki-10-container {
+  background: #ffffff!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  .kirinoki-10-container video {
+  position: absolute;
+  width: 38px !important;
+  height: auto !important;
+  left: 15px;
+  top: 1px;
+  }
+  
+  .kirinoki-12-container {
+  overflow: hidden;
+  position: relative; 
+  }
+  .kirinoki-12-container img {
+  position: absolute;
+  width: 80px !important;
+  height: auto !important;
+  left: -5px;
+  top: -15px;
+  }
+  
+  .kirinoki-13-container {
+  background: #ffffff!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  .kirinoki-13-container video {
+  position: absolute;
+  width: 38px !important;
+  height: auto !important;
+  left: 10px;
+  top: 1px;
+  }
+  
+  /* ================================
+   neptuna — IMMAGINI INIZIALI 
+  ================================ */
+  .neptuna-01-container {
+  overflow: hidden;
+  position: relative; 
+  }
+  .neptuna-01-container img {
+  position: absolute;
+  width: 68px !important;
+  height: auto !important;
+  left: -1px;
+  top: -13px;
+  }
+  
+  .neptuna-06-container {
+  background: #E42261!important;
+  overflow: hidden;
+  position: relative; 
+  }
+  .neptuna-06-container img {
+  position: absolute;
+  width: 60px !important;
+  height: auto !important;
+  left: 2px;
+  top: -15px;
+  }
+  
+  .neptuna-07-container {
+  overflow: hidden;
+  position: relative; 
+  }
+  .neptuna-07-container img {
+  position: absolute;
+  width: 72px !important;
+  height: auto !important;
+  left: -1px;
+  top: -5px;
+  }
+  
+  .neptuna-08-container {
+  overflow: hidden;
+  position: relative; 
+  }
+  .neptuna-08-container img {
+  position: absolute;
+  width: 72px !important;
+  height: auto !important;
+  left: -1px;
+  top: -31px;
+  }
+  
+  .neptuna-09-container {
+  overflow: hidden;
+  position: relative; 
+  }
+  .neptuna-09-container img {
+  position: absolute;
+  width: 68px !important;
+  height: auto !important;
+  left: -1px;
+  top: -41px;
+  }
+  
+  .neptuna-11-container {
+  overflow: hidden;
+  position: relative; 
+  }
+  .neptuna-11-container img {
+  position: absolute;
+  width: 68px !important;
+  height: auto !important;
+  left: -1px;
+  top: -41px;
+  }
+  
+  .neptuna-13-container {
+  overflow: hidden;
+  position: relative; 
+  }
+  .neptuna-13-container img {
+  position: absolute;
+  width: 68px !important;
+  height: auto !important;
+  left: -1px;
+  top: -1px;
+  }
+  
+  /* ================================
+   PROJECT OPEN — GALLERY
+  ================================ */
+  
+  .project.open .project-images {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 8px;
+  height: 401px;
+  }
+  
+  .project.open .image-placeholder {
+  flex: 0 0 160px;
+  width: 160px;
+  height: 92px;
+  transition: all 0.3s ease;
+  }
+  
+  .project.open .image-placeholder:hover {
+  flex: 0 0 615px;
+  width: 615px;
+  height: 401px;
+  z-index: 10;
+  }
+  
+  .project.open .image-placeholder:hover img,
+  .project.open .image-placeholder:hover video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.03);
+  }
+  
+  .project.open .image-placeholder img,
+  .project.open .image-placeholder video {
+  transition: none;
+  }
+  
+  
+  
+  /* ================================
+   PROJECT INFORMATION
+  ================================ */
+  
+  .project-information {
+  display: none;
+  
+  width: 100%;
+  
+  margin-top: 0;
+  margin-left: 0;
+  margin-bottom: 60px;
+  
+  position: relative;
+  
+  grid-template-columns: 550px 500px;
+  gap: 35px;
+  
+  font-size: 15px;
+  line-height: 1.25;
+  }
+  
+  
+  /* ================================
+   PROJECT APERTO — INFORMAZIONI
+  ================================ */
+  
+  .project.open .project-information {
+  display: grid !important;
+  
+  grid-template-columns: 550px 500px 1fr;
+  gap: 35px;
+  
+  width: 100%;
+  
+  margin-top: 0;
+  margin-left: 0;
+  margin-bottom: 60px;
+  
+  position: relative;
+  
+  z-index: 100;
+  
+  visibility: visible;
+  opacity: 1;
+  }
+  
+  
+  /* ================================
+   DESCRIZIONE
+  ================================ */
+  
+  .project-description {
+  display: block;
+  
+  width: 100%;
+  max-width: 550px;
+  
+  margin: 0;
+  padding: 0;
+  }
+  
+  .project-description p {
+  margin: 0;
+  }
+  
+  
+  /* ================================
+   DETTAGLI
+  ================================ */
+  
+  .project-details {
+  display: flex;
+  
+  flex-direction: column;
+  
+  gap: 12px;
+  
+  width: 100%;
+  }
+  
+  .project-details > div {
+  display: flex;
+  flex-direction: column;
+  
+  gap: 0;
+  }
+  
+  .detail-label {
+  margin-bottom: 2px;
+  }
+  
+  /* Vesuvio — forza la visualizzazione delle informazioni */
+  .project-vesuvio-spontaneo.open .project-information {
+  display: grid;
+  visibility: visible;
+  opacity: 1;
+  }
+  
+  /* Testo */
+  .project-information p {
+  margin: 0;
+  }
+  
+  .project-description {
+  max-width: 550px;
+  }
+  
+  .project-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  }
+  
+  .project-details div {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  }
+  
+  .detail-label {
+  margin-bottom: 2px;
+  }
+  
+  
+  /* ================================
+   PROJECT INFORMATION — ANIMATION
+  ================================ */
+  
+  .project.open .project-information {
+  animation: textSlideIn 0.6s ease-out 0.2s both;
+  }
+  
+  @keyframes textSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  }
+  
+  /* ================================
+     IMAGE PLACEHOLDERS
+  ================================ */
+  
+  .image-placeholder {
+    flex: 0 0 67px;
+  
+    width: 67px;
+    height: 40px;
+  
+    background: #ffffff;
+  
+    position: relative;
+  
+    z-index: 1;
+  }
+  
+  .image-placeholder img,
+  .image-placeholder video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 15%;
+  } 
+  
+  .decay-02-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 90%;
+  }
+  
+  .decay-03-container {
+    overflow: hidden;
+  }
+  
+  .decay-03-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 80%;
+  }
+  
+  .decay-04-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 80%;
+  }
+  
+  .decay-05-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 80%;
+  }
+  
+  .decay-06-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 50%;
+  }
+  
+  .decay-07-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 80%;
+  }
+  
+  .decay-08-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 80%;
+  }
+  
+  .decay-09-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 90%;
+  }
+  
+  .decay-10-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+  
+  .decay-11-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 50%;
+  }
+  
+  .decay-12-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+  
+  .decay-13-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+  
+  /* ================================
+     VESUVIO SPONTANEO
+     ULTIME 5 IMMAGINI VERTICALI
+  ================================ */
+  
+  .project-vesuvio-spontaneo .image-placeholder:nth-last-child(-n+5) {
+    width: 23px;
+    height: 40px;
+  
+    flex: 0 0 23px;
+  }
+  
+  .project-vesuvio-spontaneo
+  .image-placeholder:last-child {
+  width: 30px;
+  height: 40px;
+  flex: 0 0 30px;
+  }
+  
+  
+  /* ================================
+     RIGHT — ABOUT
+  ================================ */
+  
+  .about-column {
+    width: 100%;
+    height: 100vh;
+  
+    min-height: 0;
+  
+    overflow-y: auto;
+    overflow-x: hidden;
+  
+    scrollbar-width: none;
+  
+    padding-top: 112px;
+    padding-left: 1.9vw;
+    padding-right: 3.2vw;
+    padding-bottom: 50px;
+  
+    color: #8b2ca1;
+  
+    overscroll-behavior-y: contain;
+  }
+  
+  .about-column::-webkit-scrollbar {
+    display: none;
+  }
+  
+  
+  /* ================================
+     ABOUT INNER
+  ================================ */
+  
+  .about-inner {
+    width: 100%;
+    height: 100%;
+  
+    position: relative;
+  }
+  
+  
+  /* ================================
+     ABOUT TITLE
+  ================================ */
+  
+  .about-link {
+    display: block;
+  
+    width: 100%;
+  
+    color: #8b2ca1;
+  
+    font-size: 16px;
+    line-height: 1;
+  
+    text-align: right;
+  
+    text-decoration: none;
+  
+    margin-bottom: 25px;
+  
+  
+    z-index: 20;
+  }
+  
+  
+  /* ================================
+   ABOUT LINK — PROJECT OPEN
+  ================================ */
+  
+  .project-about-link {
+    display: none;
+  
+    color: #8b2ca1;
+    font-size: 16px;
+    line-height: 1;
+  
+    text-decoration: none;
+  
+    cursor: pointer;
+  
+    margin-top: 2px;
+  
+    transition: transform 0.12s ease;
+  }
+  
+  .project-about-link:active {
+    transform: scale(0.92);
+  }
+  
+  /* Mostra ABOUT solo quando un progetto è aperto */
+  
+  .site:has(.project.open) .project-about-link {
+    display: block;
+  }
+  
+  /* ================================
+     ABOUT CONTENT
+  ================================ */
+  
+  .about-content {
+    width: 100%;
+    max-width: 31rem;
+  
+    height: calc(100vh - 137px);
+  
+    overflow-y: auto;
+    overflow-x: hidden;
+  
+    padding-bottom: 50px;
+  
+    font-size: 15px;
+    line-height: 1.28;
+  
+    scrollbar-width: none;
+  }
+  
+  .about-content::-webkit-scrollbar {
+    display: none;
+  }
+  
+  
+  /* ================================
+     ABOUT SECTIONS
+  ================================ */
+  
+  .about-block {
+    width: 100%;
+  
+    margin-bottom: 27px;
+  }
+  
+  
+  /* ================================
+     ABOUT HEADINGS
+  ================================ */
+  
+  .about-block h2 {
+    margin: 0;
+  
+    font-family: Arial, Helvetica, sans-serif;
+  
+    font-size: 15px;
+    font-weight: normal;
+  
+    line-height: 1.28;
+  }
+  
+  
+  /* ================================
+     ABOUT PARAGRAPHS
+  ================================ */
+  
+  .about-block p {
+    margin: 0;
+  }
+  
+  
+  /* ================================
+     ABOUT LINKS
+  ================================ */
+  
+  .about-content a {
+    color: inherit;
+  
+    text-decoration: underline;
+  
+    text-underline-offset: 2px;
+  }
+  
+  
+  /* ================================
+     EDUCATION ITEMS
+  ================================ */
+  
+  .education-item {
+    width: 100%;
+  
+    margin-top: 23px;
+  }
+  
+  .education-item strong {
+    display: block;
+  
+    font-weight: normal;
+  }
+  
+  .education-item span {
+    display: block;
+  }
+  
+  /* ================================
+   POSIZIONE IMMAGINI — GALLERIA APERTA
+  ================================ */
+  
+  .project.open .coevo-01-container img {
+  object-fit: contain;
+  left: 55px;
+  top: -3px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .coevo-05-container img {
+  object-fit: contain;
+  left: 55px;
+  top: 27px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .coevo-06-container img {
+  object-fit: contain;
+  left: 55px;
+  top: 27px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .coevo-07-container img {
+  object-fit: contain;
+  left: 55px;
+  top: 27px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .coevo-08-container img {
+  object-fit: contain;
+  left: 55px;
+  top: 27px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .coevo-09-container img {
+  object-fit: contain;
+  left: 55px;
+  top: 27px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .coevo-10-container img {
+  object-fit: contain;
+  left: 55px;
+  top: 27px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .coevo-11-container img {
+  object-fit: contain;
+  left: 55px;
+  top: 27px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .coevo-12-container img {
+  object-fit: contain;
+  left: 55px;
+  top: 27px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .coevo-13-container img {
+  object-fit: contain;
+  left: 55px;
+  top: 27px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .tokyo-demons-02-container img {
+  object-fit: contain;
+  left: 50px;
+  top: 36px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .tokyo-demons-03-container img {
+  object-fit: contain;
+  left: 50px;
+  top: 36px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .tokyo-demons-04-container img {
+  object-fit: contain;
+  left: 50px;
+  top: 36px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .tokyo-demons-05-container img {
+  object-fit: contain;
+  left: 50px;
+  top: 29px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .tokyo-demons-06-container img {
+  object-fit: contain;
+  left: 50px;
+  top: 29px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .tokyo-demons-07-container img {
+  object-fit: contain;
+  left: 50px;
+  top: 29px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .tokyo-demons-08-container img {
+  object-fit: contain;
+  left: 50px;
+  top: 29px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .tokyo-demons-09-container img {
+  object-fit: contain;
+  left: 50px;
+  top: 29px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .tokyo-demons-10-container img {
+  object-fit: contain;
+  left: 50px;
+  top: 29px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .tokyo-demons-11-container img {
+  object-fit: contain;
+  left: 50px;
+  top: 29px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .tokyo-demons-12-container img {
+  object-fit: contain;
+  left: 50px;
+  top: 29px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .tokyo-demons-13-container img {
+  object-fit: contain;
+  left: 50px;
+  top: 29px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .angelica-13-container img {
+  object-fit: contain;
+  left: 40px;
+  top: -50px;
+  transform: scale(2.6);
+  }
+  
+  .project.open .a-tiny-playground-09-container img {
+  object-fit: contain;
+  left: 68px;
+  top: 29px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .a-tiny-playground-10-container img {
+  object-fit: contain;
+  left: 68px;
+  top: 29px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .a-tiny-playground-11-container img {
+  object-fit: contain;
+  left: 68px;
+  top: 29px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .a-tiny-playground-12-container img {
+  object-fit: contain;
+  left: 68px;
+  top: 29px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .a-tiny-playground-13-container img {
+  object-fit: contain;
+  left: 68px;
+  top: 29px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .kuchidoke-01-container video {
+  object-fit: contain;
+  left: 50px;
+  top: 10px;
+  transform: scale(2.5);
+  }
+  
+  .project.open .kuchidoke-12-container img {
+  object-fit: contain;
+  left: 8px;
+  top: 10px;
+  transform: scale(3.1);
+  }
+  
+  .project.open .kirinoki-02-container img {
+  object-fit: contain;
+  left: 60px;
+  top: 30px;
+  transform: scale(2.5);
+  }
+  
+  .project.open .kirinoki-02-container img {
+  object-fit: contain;
+  left: 60px;
+  top: 30px;
+  transform: scale(2.5);
+  }
+  
+  .project.open .kirinoki-03-container img {
+  object-fit: contain;
+  left: 41px;
+  top: 10px;
+  transform: scale(2.5);
+  }
+  
+  .project.open .kirinoki-10-container video {
+  object-fit: contain;
+  left: 60px;
+  top: 30px;
+  transform: scale(2.5);
+  }
+  
+  .project.open .kirinoki-12-container img {
+  object-fit: contain;
+  left: 50px;
+  top: 30px;
+  transform: scale(2.5);
+  }
+  
+  .project.open .kirinoki-13-container video {
+  object-fit: contain;
+  left: 50px;
+  top: 28px;
+  transform: scale(2.3);
+  }
+  
+  .project.open .neptuna-01-container img {
+  object-fit: contain;
+  left: 43px;
+  top: 28px;
+  transform: scale(2.5);
+  }
+  
+  .project.open .neptuna-06-container img {
+  object-fit: contain;
+  left: 43px;
+  top: 20px;
+  transform: scale(2.2);
+  }
+  
+  .project.open .neptuna-07-container img {
+  object-fit: contain;
+  left: 43px;
+  top: 20px;
+  transform: scale(2.4);
+  }
+  
+  .project.open .neptuna-08-container img {
+  object-fit: contain;
+  left: 43px;
+  top: 14px;
+  transform: scale(2.3);
+  }
+  
+  .project.open .neptuna-09-container img {
+  object-fit: contain;
+  left: 43px;
+  top: 10px;
+  transform: scale(2.7);
+  }
+  
+  .project.open .neptuna-11-container img {
+  object-fit: contain;
+  left: 43px;
+  top: -29px;
+  transform: scale(2.7);
+  }
+  
+  
+  .project.open .neptuna-13-container img {
+  object-fit: contain;
+  left: 43px;
+  top: 17px;
+  transform: scale(2.7);
+  }
+  
+  
+  
+  /* ================================
+   HOVER — DIMENSIONE IMMAGINI
+  ================================ */
+  
+  .project.open .coevo-01-container:hover img {
+  object-fit: contain;
+  left: 280px;
+  top: 100px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .coevo-05-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .coevo-06-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .coevo-07-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .coevo-08-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .coevo-09-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .coevo-10-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .coevo-11-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .coevo-12-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .coevo-13-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .tokyo-demons-02-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 220px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .tokyo-demons-03-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 220px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .tokyo-demons-04-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 220px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .tokyo-demons-05-container:hover img {
+  object-fit: contain;
+  left: 290px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .tokyo-demons-06-container:hover img {
+  object-fit: contain;
+  left: 290px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .tokyo-demons-07-container:hover img {
+  object-fit: contain;
+  left: 290px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .tokyo-demons-08-container:hover img {
+  object-fit: contain;
+  left: 290px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .tokyo-demons-09-container:hover img {
+  object-fit: contain;
+  left: 290px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .tokyo-demons-10-container:hover img {
+  object-fit: contain;
+  left: 290px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .tokyo-demons-11-container:hover img {
+  object-fit: contain;
+  left: 290px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .tokyo-demons-12-container:hover img {
+  object-fit: contain;
+  left: 290px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .tokyo-demons-13-container:hover img {
+  object-fit: contain;
+  left: 290px;
+  top: 180px;
+  transform: scale(8.2);
+  }
+  
+  .project.open .angelica-13-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: -20px;
+  transform: scale(9.2);
+  }
+  
+  .project.open .kuchidoke-01-container:hover video {
+  object-fit: contain;
+  left: 270px;
+  top: 58px;
+  transform: scale(9.2);
+  }
+  
+  .project.open .kuchidoke-12-container:hover img {
+  object-fit: contain;
+  left: 230px;
+  top: 220px;
+  transform: scale(11.2);
+  }
+  
+  .project.open .a-tiny-playground-09-container:hover img {
+  object-fit: contain;
+  left: 295px;
+  top: 184px;
+  transform: scale(10.3);
+  }
+  
+  .project.open .a-tiny-playground-10-container:hover img {
+  object-fit: contain;
+  left: 295px;
+  top: 184px;
+  transform: scale(10.3);
+  }
+  
+  .project.open .a-tiny-playground-11-container:hover img {
+  object-fit: contain;
+  left: 295px;
+  top: 184px;
+  transform: scale(10.3);
+  }
+  
+  .project.open .a-tiny-playground-12-container:hover img {
+  object-fit: contain;
+  left: 295px;
+  top: 184px;
+  transform: scale(10.3);
+  }
+  
+  .project.open .a-tiny-playground-13-container:hover img {
+  object-fit: contain;
+  left: 295px;
+  top: 184px;
+  transform: scale(10.3);
+  }
+  
+  .project.open .kirinoki-02-container:hover img {
+  object-fit: contain;
+  left: 295px;
+  top: 184px;
+  transform: scale(10.3);
+  }
+  
+  .project.open .kirinoki-03-container:hover img {
+  object-fit: contain;
+  left: 273px;
+  top: 180px;
+  transform: scale(8.8);
+  }
+  
+  .project.open .kirinoki-10-container:hover video {
+  object-fit: contain;
+  left: 295px;
+  top: 184px;
+  transform: scale(8.8);
+  }
+  
+  .project.open .kirinoki-12-container:hover img {
+  object-fit: contain;
+  left: 295px;
+  top: 184px;
+  transform: scale(8.8);
+  }
+  
+  .project.open .kirinoki-13-container:hover video {
+  object-fit: contain;
+  left: 295px;
+  top: 184px;
+  transform: scale(8.8);
+  }
+  
+  .project.open .neptuna-01-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 184px;
+  transform: scale(9.5);
+  }
+  
+  .project.open .neptuna-06-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 184px;
+  transform: scale(9.5);
+  }
+  
+  .project.open .neptuna-07-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 184px;
+  transform: scale(9.5);
+  }
+  
+  .project.open .neptuna-08-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 184px;
+  transform: scale(9.5);
+  }
+  
+  .project.open .neptuna-09-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 230px;
+  transform: scale(9.5);
+  }
+  
+  .project.open .neptuna-11-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 130px;
+  transform: scale(9.5);
+  }
+  
+  .project.open .neptuna-13-container:hover img {
+  object-fit: contain;
+  left: 270px;
+  top: 180px;
+  transform: scale(10.5);
+  }
+  
+  /* ================================
+   VESUVIO — ULTIMI 5 VIDEO APERTI
+  ================================ */
+  
+  .project-vesuvio-spontaneo.open
+  .image-placeholder:nth-last-child(-n+5) {
+  flex: 0 0 50px;
+  width: 50px;
+  height: 91px;
+  }
+  
+  .project-vesuvio-spontaneo.open
+  .image-placeholder:last-child {
+  flex: 0 0 62px;
+  width: 62px;
+  height: 90px;
+  }
+  
+  .project-vesuvio-spontaneo.open
+  .image-placeholder:nth-last-child(-n+5):hover {
+  flex: 0 0 225px;
+  width: 225px;
+  height: 400px;
+  }
+  
+  .project-vesuvio-spontaneo.open
+  .image-placeholder:nth-last-child(-n+5):hover video {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+  }
+  
+  .project-vesuvio-spontaneo.open
+  .image-placeholder:last-child:hover {
+  flex: 0 0 300px;
+  width: 300px;
+  height: 400px;
+  }
+  
+  /* ================================
+   VESUVIO SPONTANEO — SCROLL
+  ================================ */
+  
+  body:has(.project-vesuvio-spontaneo.open) {
+  overflow-x: hidden;
+  overflow-y: auto;
+  }
+  
+  .site:has(.project-vesuvio-spontaneo.open) {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  
+  display: grid;
+  grid-template-columns: 100% 0%;
+  
+  align-items: start;
+  }
+  
+  .site:has(.project-vesuvio-spontaneo.open) .projects-column {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  
+  overflow: visible;
+  
+  padding-right: 3.2vw;
+  padding-bottom: 180px;
+  } 
+  
+  /* ========================================
+   ANIMAZIONE INIZIALE DEI PROGETTI
+   Solo al caricamento della pagina
+  ======================================== */
+  
+  .projects-list .project {
+  opacity: 0;
+  transform: translateX(-60px);
+  animation: projectEntrance 0.7s ease-out forwards;
+  }
+  
+  
+  /* Entrata progressiva da sinistra verso destra */
+  
+  .projects-list .project:nth-child(1) {
+  animation-delay: 0.05s;
+  }
+  
+  .projects-list .project:nth-child(2) {
+  animation-delay: 0.12s;
+  }
+  
+  .projects-list .project:nth-child(3) {
+  animation-delay: 0.19s;
+  }
+  
+  .projects-list .project:nth-child(4) {
+  animation-delay: 0.26s;
+  }
+  
+  .projects-list .project:nth-child(5) {
+  animation-delay: 0.33s;
+  }
+  
+  .projects-list .project:nth-child(6) {
+  animation-delay: 0.40s;
+  }
+  
+  .projects-list .project:nth-child(7) {
+  animation-delay: 0.47s;
+  }
+  
+  .projects-list .project:nth-child(8) {
+  animation-delay: 0.54s;
+  }
+  
+  .projects-list .project:nth-child(9) {
+  animation-delay: 0.61s;
+  }
+  
+  
+  /* Animazione */
+  
+  @keyframes projectEntrance {
+  
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  }
+  
+  /* ========================================
+   LOGO — EFFETTO STAMPO DALL'ALTO
+  ======================================== */
+  
+  .site-header .logo {
+  opacity: 0;
+  
+  /* parte dall'alto e leggermente più grande */
+  transform: translateY(-35px) scale(1.35);
+  
+  transform-origin: center center;
+  
+  animation: logoStamp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  
+  /* entra dopo che i progetti si sono disposti */
+  animation-delay: 1.35s;
+  }
+  
+  
+  @keyframes logoStamp {
+  
+  0% {
+    opacity: 0;
+    transform: translateY(-35px) scale(1.35);
+  }
+  
+  55% {
+    opacity: 1;
+    transform: translateY(4px) scale(0.97);
+  }
+  
+  75% {
+    transform: translateY(-1px) scale(1.02);
+  }
+  
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  
+  }
+  
+  
+  @media screen and (max-width: 600px) {
+  
+    /* =========================================
+       PAGINA MOBILE
+    ========================================= */
+  
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+  
+      overflow-x: hidden;
+      overflow-y: auto;
+  
+      scroll-snap-type: y mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+  
+  
+    /* =========================================
+       SITE
+    ========================================= */
+  
+    .site {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 100%;
+    }
+  
+  
+    /* =========================================
+       PROJECT COLUMN
+    ========================================= */
+  
+    .projects-column {
+      width: 100%;
+      height: auto;
+      min-height: 100%;
+  
+      overflow: visible;
+  
+      padding: 18px 15px 0;
+    }
+  
+  
+    /* =========================================
+       HEADER
+    ========================================= */
+  
+    .site-header {
+      background: #d1cdcd;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    
+      width: 100%;
+      height: auto;
+    
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    
+      padding: 8px 15px 10px;
+    
+      pointer-events: none;
+    }
+    
+    .site-header .logo,
+    .site-header .project-about-link {
+      pointer-events: auto;
+    }
+  
+    .logo {
+      font-size: 32px;
+      line-height: 1;
+      margin-top: 2px;
+    }
+  
+    .project-about-link {
+      display: block;
+  
+      font-size: 16px;
+      line-height: 1;
+  
+      margin-top: 16px;
+  
+      color: #8b2ca1;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  
+  
+    /* =========================================
+       PROJECT LIST
+    ========================================= */
+  
+    .projects-list {
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+  
+  
+    /* =========================================
+       OGNI PROGETTO = UNA PAGINA
+    ========================================= */
+  
+    .project {
+      width: 100%;
+    
+      height: auto;
+      min-height: calc(100svh - 90px);
+    
+      margin: 0;
+      padding: 54px 0 25px;
+    
+      box-sizing: border-box;
+    
+      display: flex;
+      flex-direction: column;
+    
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+  
+  
+    /* =========================================
+       PROJECT META
+    ========================================= */
+  
+    .project-meta {
+      width: 100%;
+  
+      display: grid;
+  
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(100px, 1fr)
+        42px;
+  
+      column-gap: 6px;
+  
+      align-items: baseline;
+  
+      margin-bottom: 10px;
+
+      
+     position: relative;
+      
+    }
+  
+    .project-title,
+    .project-type,
+    .project-year {
+      font-size: 15px;
+      line-height: 1.1;
+    }
+  
+  
+    /* =========================================
+       GALLERIA ORIZZONTALE
+    ========================================= */
+  
+    .project-images {
+      width: 100%;
+  
+      display: flex;
+      flex-wrap: nowrap;
+  
+      gap: 3px;
+  
+      overflow-x: auto;
+      overflow-y: hidden;
+  
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+  
+      padding: 0;
+  
+      flex-shrink: 0;
+    }
+  
+    .project-images::-webkit-scrollbar {
+      display: none;
+    }
+  
+  
+    .project-images {
+        width:100%;
+        display:flex;
+        flex-wrap:nowrap;
+        gap:3px;
+        overflow-x:auto;
+        overflow-y:hidden;
+        scrollbar-width:none;
+        -webkit-overflow-scrolling:touch;
+        padding:0;
+        flex-shrink:0;
+      }
+      
+      .project-images::-webkit-scrollbar {
+        display:none;
+      }
+      
+      .project-images .image-placeholder {
+        flex:0 0 calc(100vw - 30px) !important;
+        width:calc(100vw - 30px) !important;
+        height:calc((100vw - 30px) * 0.58) !important;
+        position:relative;
+      }
+
+      /* MOBILE — IMMAGINI PERSONALIZZATE */
+
+.coevo-01-container img {
+    transform: scale(5);
+    left: 160px;
+    top: 50px;
+  }
+  
+  .coevo-05-container img {
+    transform: scale(5);
+    left: 155px;
+    top: 88px;
+  }
+
+  .coevo-06-container img {
+    transform: scale(5);
+    left: 155px;
+    top: 88px;
+  }
+
+  .coevo-07-container img {
+    transform: scale(5);
+    left: 155px;
+    top: 88px;
+  }
+
+  .coevo-08-container img {
+    transform: scale(5);
+    left: 155px;
+    top: 88px;
+  }
+
+  .coevo-09-container img {
+    transform: scale(5);
+    left: 155px;
+    top: 88px;
+  }
+
+  .coevo-10-container img {
+    transform: scale(5);
+    left: 155px;
+    top: 88px;
+  }
+
+  .coevo-11-container img {
+    transform: scale(5);
+    left: 155px;
+    top: 88px;
+  }
+
+  .coevo-12-container img {
+    transform: scale(5);
+    left: 155px;
+    top: 88px;
+  }
+
+  .coevo-13-container img {
+    transform: scale(5);
+    left: 155px;
+    top: 88px;
+  }
+  
+  .tokyo-demons-02-container img {
+    transform: scale(6);
+    left: 150px;
+    top: 120px;
+  }
+
+  .tokyo-demons-03-container img {
+    transform: scale(6);
+    left: 153px;
+    top: 120px;
+  }
+
+  .tokyo-demons-04-container img {
+    transform: scale(6);
+    left: 153px;
+    top: 120px;
+  }
+
+  .tokyo-demons-05-container img {
+    transform: scale(6);
+    left: 153px;
+    top: 95px;
+  }
+
+  .tokyo-demons-06-container img {
+    transform: scale(6);
+    left: 153px;
+    top: 95px;
+  }
+
+  .tokyo-demons-07-container img {
+    transform: scale(6);
+    left: 153px;
+    top: 95px;
+  }
+
+  .tokyo-demons-08-container img {
+    transform: scale(6);
+    left: 153px;
+    top: 95px;
+  }
+
+  .tokyo-demons-09-container img {
+    transform: scale(6);
+    left: 153px;
+    top: 95px;
+  }
+
+  .tokyo-demons-10-container img {
+    transform: scale(6);
+    left: 153px;
+    top: 95px;
+  }
+
+  .tokyo-demons-11-container img {
+    transform: scale(6);
+    left: 153px;
+    top: 95px;
+  }
+
+  .tokyo-demons-12-container img {
+    transform: scale(6);
+    left: 153px;
+    top: 95px;
+  }
+
+  .tokyo-demons-13-container img {
+    transform: scale(6);
+    left: 153px;
+    top: 95px;
+  }
+
+  .angelica-13-container img {
+    transform: scale(6.2);
+    left: 130px;
+    top: -88px;
+  }
+
+  .a-tiny-playground-09-container img {
+    transform: scale(5.5);
+    left: 165px;
+    top: 86px;
+  }
+
+  .a-tiny-playground-10-container img {
+    transform: scale(5.5);
+    left: 165px;
+    top: 86px;
+  }
+
+  .a-tiny-playground-11-container img {
+    transform: scale(5.5);
+    left: 165px;
+    top: 86px;
+  }
+
+  .a-tiny-playground-12-container img {
+    transform: scale(5.5);
+    left: 165px;
+    top: 86px;
+  }
+
+  .a-tiny-playground-13-container img {
+    transform: scale(5.5);
+    left: 165px;
+    top: 86px;
+  }
+
+  .kuchidoke-01-container video {
+    transform: scale(5.5);
+    left: 150px;
+    top: 86px;
+  }
+
+  .kuchidoke-12-container img {
+    transform: scale(5.5);
+    left: 110px;
+    top: 86px;
+  }
+
+  .kirinoki-02-container img {
+    transform: scale(5.5);
+    left: 160px;
+    top: 86px;
+  }
+
+  .kirinoki-03-container img {
+    transform: scale(5.3);
+    left: 150px;
+    top: 70px;
+  }
+
+  .kirinoki-10-container video {
+    transform: scale(5.3);
+    left: 150px;
+    top: 87px;
+  }
+
+  .kirinoki-12-container img {
+    transform: scale(4.3);
+    left: 138px;
+    top: 60px;
+  }
+
+  .kirinoki-13-container video {
+    transform: scale(5.3);
+    left: 150px;
+    top: 87px;
+  }
+
+  .neptuna-01-container img {
+    transform: scale(5.6);
+    left: 140px;
+    top: 87px;
+  }
+
+  .neptuna-06-container img {
+    transform: scale(5.6);
+    left: 140px;
+    top: 87px;
+  }
+
+  .neptuna-07-container img {
+    transform: scale(5.6);
+    left: 140px;
+    top: 87px;
+  }
+
+  .neptuna-08-container img {
+    transform: scale(5.6);
+    left: 140px;
+    top: 87px;
+  }
+
+  .neptuna-09-container img {
+    transform: scale(5.6);
+    left: 140px;
+    top: 87px;
+  }
+
+  .neptuna-11-container img {
+    transform: scale(5.6);
+    left: 140px;
+    top: 5px;
+  }
+
+  .neptuna-13-container img {
+    transform: scale(5.6);
+    left: 140px;
+    top: 65px;
+  }
+
+  /* VESUVIO SPONTANEO — ultime 5 immagini più strette */
+
+.project-vesuvio-spontaneo .image-placeholder:nth-last-child(-n+5) {
+    flex: 0 0 113px !important;
+    width: 113px !important;
+    height: calc((100vw - 30px) * 0.58) !important;
+  }
+  
+  .project-vesuvio-spontaneo .image-placeholder:last-child {
+    flex: 0 0 120px !important;
+    width: 120px !important;
+    height: calc((100vw - 30px) * 0.58) !important;
+  }
+
+
+
+
+
+  
+  
+    /* =========================================
+       PROJECT INFORMATION
+    ========================================= */
+  
+    .project-information {
+      display: block !important;
+    
+      width: 100%;
+    
+      margin-top: 14px;
+      margin-bottom: 20px;
+    
+      padding: 0;
+    
+      font-size: 13px;
+      line-height: 1.3;
+    
+      overflow: visible !important;
+    
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    .project-information p {
+      margin: 0 0 10px;
+    }
+  
+  
+    /* =========================================
+     ABOUT MOBILE
+  ========================================= */
+  
+  .about-link {
+    display: none;
+  }
+  
+  .about-column {
+    display: none;
+  }
+  
+  
+  /* =========================================
+     ABOUT APERTO
+  ========================================= */
+  
+  body.mobile-about-open {
+    overflow: hidden;
+  }
+  
+  body.mobile-about-open .projects-column {
+    display: none;
+  }
+  
+  body.mobile-about-open .about-column {
+    display: block;
+  
+    position: fixed;
+    inset: 0;
+  
+    width: 100%;
+    height: 100svh;
+  
+    padding: 8px 15px 30px;
+  
+    background: #d1cdcd;
+  
+    z-index: 2000;
+  
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  body.mobile-about-open .about-inner {
+    width: 100%;
+    min-height: 100%;
+  }
+  
+  body.mobile-about-open .about-link {
+    display: block;
+  
+    width: 100%;
+  
+    margin: 8px 0 25px;
+  
+    text-align: right;
+  
+    color: #8b2ca1;
+  
+    font-size: 16px;
+    line-height: 1;
+  
+    text-decoration: none;
+  }
+  
+  body.mobile-about-open .about-content {
+    width: 100%;
+    max-width: none;
+  
+    height: auto;
+  
+    overflow: visible;
+  
+    padding-bottom: 40px;
+  
+    font-size: 15px;
+    line-height: 1.28;
+  }
+  
+  
+  /* =========================================
+     MENU PROGETTI MOBILE
+  ========================================= */
+  
+  .mobile-project-menu {
+    display: none;
+  
+    width: 100%;
+  
+    margin-top: 4px;
+    margin-bottom: 12px;
+  
+    font-size: 15px;
+    line-height: 1.35;
+  
+    color: #8b2ca1;
+  }
+  
+  .mobile-project-menu.show {
+    display: block;
+  }
+  
+  .mobile-project-menu-item {
+    display: block;
+  
+    width: fit-content;
+  
+    padding: 1px 0;
+  
+    color: #8b2ca1;
+  
+    cursor: pointer;
+  }
+  
+  .mobile-project-menu-item:active {
+    opacity: 0.5;
+  }
+
+  /* =====================================================
+   MOBILE — FILTRI
+===================================================== */
+
+
+.mobile-filter-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    z-index: 100;
+    margin-top: 4px;
+  
+    font-size: 15px;
+    line-height: 1.35;
+    color: #8b2ca1;
+    white-space: nowrap;
+  
+    background: #d1cdcd;
+    padding: 3px 10px;
+    box-sizing: border-box;
+  }
+
+.mobile-filter-menu.show {
+  display: block;
+}
+
+.mobile-filter-menu[data-filter="type"] {
+  left: calc((100% - 42px - 12px) / 2 + 6px);
+}
+
+.mobile-filter-menu[data-filter="year"] {
+  right: -10px;
+}
+
+.mobile-filter-menu-item {
+  display: block;
+  width: fit-content;
+  padding: 1px 0;
+  color: #8b2ca1;
+  cursor: pointer;
+}
+
+.mobile-filter-menu-item:active {
+  opacity: 0.5;
+}
+
+  .project-type,
+.project-year {
+  position: relative;
+  cursor: pointer;
+}
+  
+  
+  /* =========================================
+     FINE MOBILE
+  ========================================= */
+}
+   
+  
+  
+  .project-year {
+    cursor: pointer;
+  }
+  
+  .project-year:hover {
+    color: #8b2ca1;
+  }
+  
+
+  .project-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  
+  .project-links a {
+    color: #8b2ca1;
+    text-decoration: underline;
+  }
+  
+  .project-links a:hover {
+    color: inherit;
+  }
+
+
+  
+   
+   
+  
+  
+  
+  
+  
+  
+  
+  
+  
