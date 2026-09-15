@@ -14,27 +14,15 @@ body {
   height: 100%;
 }
 
-@font-face {
-  font-family: "Nunito Local";
-  src: url("fonts/Nunito-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
 
 body {
   background: #ffffff;
   color: #000000;
-  font-family: "Nunito Local", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 12px;
   overflow: hidden;
 }
 
-@font-face {
-  font-family: "Nunito";
-  src: url("../fonts/Nunito-Regular.ttf") format("TrueType font");
-  font-weight: 400;
-  font-style: normal;
-}
 
 /* ================================
    MAIN LAYOUT
@@ -90,7 +78,7 @@ body {
   display: inline-block;
   color: #10aade;
 
-  font-family: "Nunito", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
 
   font-size: 32px;
   line-height: 1;
@@ -1098,7 +1086,7 @@ body {
 
 .about-block h2 {
   margin: 0 0 18px 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 15px;
   font-weight: normal;
   line-height: 1.28;
@@ -1768,7 +1756,7 @@ body {
 
     white-space: nowrap !important;
 
-    font-family: "Nunito", sans-serif !important;;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-size: 12px !important;
     font-weight: 400 !important;
     line-height: 1.2 !important;
