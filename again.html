@@ -5,11 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eva Cupellini</title>
   <link rel="icon" href="media/eva-favicon.png">
-  <link rel="stylesheet" href="style.css"> 
+  <link rel="stylesheet" href="style2.css"> 
 </head>
 
-<body>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
   
+    const intro = document.querySelector(".intro");
+  
+    if (!intro) return;
+  
+    const introSound = new Audio(
+      "media/freesound_community-socket-wrench-2-26455.mp3"
+    );
+  
+    introSound.volume = 1;
+  
+    /* Sblocca l'audio al primo click */
+    document.addEventListener("click", function () {
+      introSound.play().catch(function () {
+        console.log("Audio non disponibile");
+      });
+    }, { once: true });
+  
+    /* Scompare dopo 2 secondi */
+    setTimeout(function () {
+  
+      intro.style.opacity = "0";
+      intro.style.pointerEvents = "none";
+  
+      setTimeout(function () {
+        intro.remove();
+      }, 300);
+  
+    }, 2000);
+  
+  });
+  </script>
+<body class="home-view">
+  <div class="intro">
+    <img src="media/eva-favicon.png" class="intro-wrench" alt="">
+  </div>
   <main class="site">
 
     <!-- LEFT: PROJECTS -->
@@ -20,19 +56,28 @@
         <a href="index.html#about" class="project-about-link">ABOUT</a>
       </header>
 
+      <div class="home-numbers">
+        <div>01</div>
+        <div>02</div>
+        <div>03</div>
+        <div>04</div>
+        <div>05</div>
+        <div>06</div>
+        <div>07</div>
+        <div>08</div>
+        <div>09</div>
+      </div>
+
       <div class="projects-list">
 
         <!-- DECAY -->
         <article class="project project-decay">
           <div class="project-meta">
-            <a href="#" class="project-title">SPIRALIS</a>
-            <span class="project-type">Editorial</span>
-            <span class="project-year">2026</span>
+            <span class="project-title">SPIRALIS</span>
           </div>
 
           <!-- CONTENUTO DELLA TENDINA -->
   <!-- CONTENUTO DELLA TENDINA -->
-<div class="project-content">
 
   <div class="project-images">
 
@@ -92,6 +137,11 @@
 
 
   <div class="project-information">
+    <div class="project-meta-secondary">
+    <span class="project-type">Editorial</span>
+    <span class="project-year">2026</span>
+    </div>
+
  <!-- COLONNA 1 — DESCRIZIONE -->
     <div class="project-description">
       <p>
@@ -120,7 +170,6 @@ The spiral, which defines the magazine’s visual language, symbolises the cycli
 
     </div>
 
-  </div>
 
 </div>
         </article>
@@ -129,11 +178,9 @@ The spiral, which defines the magazine’s visual language, symbolises the cycli
         <!-- COEVO -->
         <article class="project project-coevo">
           <div class="project-meta">
-            <a href="#" class="project-title">COEVO</a>
-            <span class="project-type">Editorial</span>
-            <span class="project-year">2025</span>
+            <span class="project-title">COEVO</span>
           </div>
-<div class="project-content">
+
           <div class="project-images">
             <div class="image-placeholder coevo-01-container">
               <img src="media/coevo-01.png" alt="">
@@ -176,6 +223,10 @@ The spiral, which defines the magazine’s visual language, symbolises the cycli
             </div>
           </div>
           <div class="project-information">
+            <div class="project-meta-secondary">
+              <span class="project-type">Editorial</span>
+              <span class="project-year">2025</span>
+            </div>
 
             <div class="project-description">
               <p>
@@ -205,16 +256,14 @@ Rather than offering a definitive answer about the future, Coevo brings together
           
             </div>
           </div>
-</div>
+
         </article>
 
 
         <!-- TOKYO DEMONS -->
         <article class="project project-tokyo-demons">
           <div class="project-meta">
-            <a href="#" class="project-title">Tokyo Demons</a>
-            <span class="project-type">Editorial</span>
-            <span class="project-year">2023</span>
+            <span class="project-title">Tokyo Demons</span>
           </div>
 
           <div class="project-images">
@@ -259,7 +308,10 @@ Rather than offering a definitive answer about the future, Coevo brings together
             </div>
           </div>
           <div class="project-information">
-
+            <div class="project-meta-secondary">
+              <span class="project-type">Editorial</span>
+              <span class="project-year">2023</span>
+            </div>
             <div class="project-description">
               <p>
                 This project focuses on the contrast between Japanese spirituality and the imagery of yōkai and oni. Through a fully red-toned visual language, the photographs create a sense of unease and tension, portraying a unique world where traditional beliefs and supernatural presences coexist.
@@ -284,9 +336,7 @@ Rather than offering a definitive answer about the future, Coevo brings together
         <!-- ANGELICA -->
         <article class="project project-angelica">
           <div class="project-meta">
-            <a href="#" class="project-title">Angelica</a>
-            <span class="project-type">Editorial</span>
-            <span class="project-year">2023</span>
+            <span class="project-title">Angelica</span>
           </div>
 
           <div class="project-images">
@@ -331,7 +381,10 @@ Rather than offering a definitive answer about the future, Coevo brings together
             </div>
           </div>
           <div class="project-information">
-
+              <div class="project-meta-secondary">
+              <span class="project-type">Editorial</span>
+              <span class="project-year">2023</span>
+              </div>
             <div class="project-description">
               <p>
                 An editorial series featuring photographs I took to capture the quiet, everyday moments of a girl spending a Sunday at home.
@@ -355,9 +408,7 @@ Rather than offering a definitive answer about the future, Coevo brings together
         <!-- A TINY PLAYGROUND -->
         <article class="project project-tiny-playground">
           <div class="project-meta">
-            <a href="#" class="project-title">A tiny playground</a>
-            <span class="project-type">Animation</span>
-            <span class="project-year">2026</span>
+            <span class="project-title">A tiny playground</span>
           </div>
 
           <div class="project-images">
@@ -416,6 +467,10 @@ Rather than offering a definitive answer about the future, Coevo brings together
             </div>
           </div>
           <div class="project-information">
+            <div class="project-meta-secondary">
+              <span class="project-type">Animation</span>
+              <span class="project-year">2026</span>
+            </div>
 
             <div class="project-description">
               <p>
@@ -448,9 +503,7 @@ The visual language embraces a handmade, tactile, and intentionally imperfect ae
         <!-- KUCHIDOKE -->
         <article class="project project-kuchidoke">
           <div class="project-meta">
-            <a href="#" class="project-title">Kuchidoke</a>
-            <span class="project-type">Typography</span>
-            <span class="project-year">2026</span>
+            <span class="project-title">Kuchidoke</span>
           </div>
 
           <div class="project-images">
@@ -501,6 +554,10 @@ The visual language embraces a handmade, tactile, and intentionally imperfect ae
             </div>
           </div>
           <div class="project-information">
+            <div class="project-meta-secondary">
+              <span class="project-type">Typography</span>
+              <span class="project-year">2026</span>
+            </div>
 
             <div class="project-description">
               <p>
@@ -525,9 +582,7 @@ I documented the process through photography and created a type specimen explain
         <!-- KIRINOKI -->
         <article class="project project-kirinoki">
           <div class="project-meta">
-            <a href="#" class="project-title">Kirinoki</a>
-            <span class="project-type">Brand identity</span>
-            <span class="project-year">2026</span>
+            <span class="project-title">Kirinoki</span>
           </div>
 
           <div class="project-images">
@@ -580,12 +635,16 @@ I documented the process through photography and created a type specimen explain
             </div>
           </div>
           <div class="project-information">
+            <div class="project-meta-secondary">
+              <span class="project-type">Brand identity</span>
+              <span class="project-year">2026</span>
+            </div>
 
             <div class="project-description">
               <p>
                 An identity designed to highlight an authentic and slower way of experiencing Tokyo, away from crowds and tourist destinations. Kirinoki invites visitors to discover local life through cafés, restaurants, seasonal activities, and small everyday rituals, creating a sense of familiarity and belonging.
                 The logo draws from the family crest, while the soft blue of the identity evokes the calm atmosphere of the experience.
-                The project includes logo design, illustration, photography, video editing, and motion design, telling the story of the Airbnb <br> and its neighbourhood through the changing seasons.
+                The project includes logo design, illustration, photography, video editing, and motion design, telling the story of the Airbnb and its neighbourhood through the changing seasons.
 
               </p>
             </div>
@@ -614,9 +673,7 @@ I documented the process through photography and created a type specimen explain
         <!-- NEPTUNA -->
         <article class="project project-neptuna">
           <div class="project-meta">
-            <a href="#" class="project-title">Neptuna</a>
-            <span class="project-type">Brand identity</span>
-            <span class="project-year">2023</span>
+            <span class="project-title">Neptuna</span>
           </div>
 
           <div class="project-images">
@@ -669,6 +726,10 @@ I documented the process through photography and created a type specimen explain
             </div>
           </div>
           <div class="project-information">
+            <div class="project-meta-secondary">
+              <span class="project-type">Brand identity</span>
+              <span class="project-year">2023</span>
+            </div>
 
             <div class="project-description">
               <p>
@@ -713,11 +774,8 @@ Packaging, receipts, and informative content reveal the hidden consequences of e
 
 <!-- VESUVIO SPONTANEO -->
 <article class="project project-vesuvio-spontaneo">
-
   <div class="project-meta">
-    <a href="#" class="project-title">Vesuvio Spontaneo</a>
-    <span class="project-type">Brand identity</span>
-    <span class="project-year">2026</span>
+    <span class="project-title">Vesuvio Spontaneo</span>
   </div>
 
 
@@ -816,6 +874,10 @@ Packaging, receipts, and informative content reveal the hidden consequences of e
 
   <!-- INFORMATION -->
   <div class="project-information">
+    <div class="project-meta-secondary">
+      <span class="project-type">Brand identity</span>
+      <span class="project-year">2026</span>
+    </div>
 
     <div class="project-description">
       <p>
@@ -864,8 +926,6 @@ Packaging, receipts, and informative content reveal the hidden consequences of e
 
       <div class="about-inner">
 
-        <a href="index.html#about" class="about-link">ABOUT</a>
-
         <section class="about-content">
 
           <div class="about-block">
@@ -895,12 +955,7 @@ Packaging, receipts, and informative content reveal the hidden consequences of e
           <div class="about-block">
 
             <p>
-              Eva Cupellini is a communication designer based in Milan,
-              with an Italian–Japanese background. She is currently pursuing
-              a Master’s degree in Communication Design at Politecnico di Milano.
-              Her practice focuses on graphic, editorial, identity, and visual
-              design, with a particular interest in Japanese and Italian visual
-              cultures.
+              Eva Cupellini is a communication designer based in Milan, with an Italian–Japanese background. She is currently pursuing a Master’s degree in Communication Design at Politecnico di Milano. Her practice focuses on graphic, editorial, identity, visual design, and <span class="photography-trigger">photography</span> with a particular interest in Japanese and Italian visual cultures.
             </p>
 
           </div>
@@ -912,37 +967,37 @@ Packaging, receipts, and informative content reveal the hidden consequences of e
             <h2>Education</h2>
 
             <div class="education-item">
-              <strong>M.A. Communication Design</strong>
+              <strong><u>M.A. Communication Design</u></strong>
               <span>Politecnico di Milano · 2024–Present</span>
             </div>
 
             <div class="education-item">
-              <strong>Study Abroad</strong>
+              <strong><u>Study Abroad</u></strong>
               <span>Musashino Art University, Tokyo · 2026</span>
             </div>
 
             <div class="education-item">
-              <strong>B.A. Communication Design</strong>
+              <strong><u>B.A. Communication Design</u></strong>
               <span>Politecnico di Milano · 2021–2024</span>
             </div>
 
             <div class="education-item">
-              <strong>B.A. Design</strong>
+              <strong><u>B.A. Design</u></strong>
               <span>Sapienza Università di Roma · 2020–2021</span>
             </div>
 
             <div class="education-item">
-              <strong>Scientific High School</strong>
+              <strong><u>Scientific High School</u></strong>
               <span>Liceo Bruno Touschek · 2015–2020</span>
             </div>
 
             <div class="education-item">
-              <strong>Japanese Saturday School</strong>
+              <strong><u>Japanese Saturday School</u></strong>
               <span>Rome · 2005–2017</span>
             </div>
 
             <div class="education-item">
-              <strong>Study Abroad</strong>
+              <strong><u>Study Abroad</u></strong>
               <span>Eastbourne, UK · 2018</span>
             </div>
 
@@ -955,13 +1010,13 @@ Packaging, receipts, and informative content reveal the hidden consequences of e
             <h2>Experience</h2>
 
             <div class="education-item">
-              <strong>Graphic Designer</strong>
+              <strong><u>Graphic Designer</u></strong>
               <span>WorldWide Excellence · 2022–2026 · Milan</span>
               <span>(My work mainly focused on magazine layout design for luxury hotels. I contributed to projects for Mandarin Oriental Milan, Madrid, Lucerne, Munich, Barcelona and Zurich, as well as The Gritti Palace in Venice.)</span>
             </div>
 
             <div class="education-item">
-              <strong>Freelance</strong>
+              <strong><u>Freelance</u></strong>
               <span>2023-present</span>
             </div>
 
@@ -982,673 +1037,1132 @@ Packaging, receipts, and informative content reveal the hidden consequences of e
           </div>
 
         </section>
+        <div class="photography-gallery">
 
-      </div>
-
-    </aside>
+          <div class="photography-gallery-header">
+            <button class="photo-view active" data-view="full">FULL</button>
+            <button class="photo-view" data-view="grid">GRID</button>
+          </div>
+        
+          <div class="photography-images">
+        
+            <img src="media/photo-01.jpg" alt="">
+            <img src="media/photo-02.jpg" alt="">
+            <img src="media/photo-03.jpg" alt="">
+            <img src="media/photo-04.jpg" alt="">
+            <img src="media/photo-05.jpg" alt="">
+            <img src="media/photo-06.jpg" alt="">
+            <img src="media/photo-07.jpg" alt="">
+            <img src="media/photo-08.jpg" alt="">
+            <img src="media/photo-09.jpg" alt="">
+            <img src="media/photo-10.jpg" alt="">
+            <img src="media/photo-11.jpg" alt="">
+            <img src="media/photo-12.jpg" alt="">
+            <img src="media/photo-13.jpg" alt="">
+            <img src="media/photo-14.jpg" alt="">
+            <img src="media/photo-15.jpg" alt="">
+            <img src="media/photo-16.jpg" alt="">
+            <img src="media/photo-17.jpg" alt="">
+            <img src="media/photo-18.jpg" alt="">
+            <img src="media/photo-19.jpg" alt="">
+            <img src="media/photo-20.jpg" alt="">
+            <img src="media/photo-21.jpg" alt="">
+        
+          </div>
+        
+        </div>
+        
+        </aside>
 
   </main>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-
-const projects = document.querySelectorAll(".project");
-const site = document.querySelector(".site");
-
-
-/* =====================================================
-   ORDINE CRONOLOGICO — CLICK SULLA DATA
-===================================================== */
-
-/* =====================================================
-   PROJECT YEAR — DESKTOP: ORDINE CRONOLOGICO
-   MOBILE: FILTRO
-===================================================== */
-
-const projectsList = document.querySelector(".projects-list");
-const originalOrder = Array.from(projects);
-
-let chronologicalOrder = false;
-
-let activeTypeFilter = "ALL";
-let activeYearFilter = "ALL";
-
-
-/* =====================================================
-   DESKTOP — ORDINA PER ANNO
-===================================================== */
-
-document.querySelectorAll(".project-year").forEach(function(year) {
-
-  year.addEventListener("click", function(event) {
-
-    /* MOBILE: qui non facciamo niente,
-       perché il mobile usa il filtro */
-    if (window.innerWidth <= 600) return;
-
+    
+      /* =====================================================
+         ELEMENTI PRINCIPALI
+      ===================================================== */
+    
+      const projects = document.querySelectorAll(".project");
+      const site = document.querySelector(".site");
+      const projectsList = document.querySelector(".projects-list");
+    
+      const originalOrder = Array.from(projects);
+    
+      let chronologicalOrder = false;
+      let activeTypeFilter = "ALL";
+      let activeYearFilter = "ALL";
+    
+    
+      /* =====================================================
+         HOME — CLICK SUI NUMERI
+      ===================================================== */
+    
+      const homeNumbers =
+        document.querySelectorAll(".home-numbers > div");
+    
+      const projectMap = [
+        ".project-decay",
+        ".project-coevo",
+        ".project-tokyo-demons",
+        ".project-angelica",
+        ".project-tiny-playground",
+        ".project-kuchidoke",
+        ".project-kirinoki",
+        ".project-neptuna",
+        ".project-vesuvio-spontaneo"
+      ];
+    
+      homeNumbers.forEach(function (number, index) {
+    
+  number.addEventListener("click", function (event) {
+    
     event.preventDefault();
     event.stopPropagation();
-
-    if (!projectsList) return;
-
-    /* Se è già ordinato → torna all'ordine originale */
-    if (chronologicalOrder) {
-
-      originalOrder.forEach(function(project) {
-        projectsList.appendChild(project);
-      });
-
-      chronologicalOrder = false;
-      return;
-    }
-
-    /* Ordine dal più recente al più vecchio */
-    const sortedProjects = Array.from(projects).sort(function(a, b) {
-
-      const yearA = parseInt(
-        a.querySelector(".project-year").textContent
-      );
-
-      const yearB = parseInt(
-        b.querySelector(".project-year").textContent
-      );
-
-      return yearB - yearA;
-    });
-
-    sortedProjects.forEach(function(project) {
-      projectsList.appendChild(project);
-    });
-
-    chronologicalOrder = true;
-
-  });
-
-});
-
-
-/* =====================================================
-   MOBILE — FILTRI
-===================================================== */
-
-function applyMobileFilters() {
-
-  if (window.innerWidth > 600) return;
-
-  projects.forEach(function(project) {
-
-    const typeElement = project.querySelector(".project-type");
-    const yearElement = project.querySelector(".project-year");
-
-    if (!typeElement || !yearElement) return;
-
-    const type = typeElement.textContent.trim();
-    const year = yearElement.textContent.trim();
-
-    const typeMatch =
-      activeTypeFilter === "ALL" ||
-      type === activeTypeFilter;
-
-    const yearMatch =
-      activeYearFilter === "ALL" ||
-      year === activeYearFilter;
-
-    if (typeMatch && yearMatch) {
-      project.style.display = "";
-    } else {
+    
+    const selectedProject =
+      document.querySelector(projectMap[index]);
+    
+    if (!selectedProject) return;
+    
+    
+    /* APRE IL LAYER */
+    
+    document.body.classList.add("project-layer-open");
+    
+    
+    /* CHIUDE TUTTI GLI ALTRI PROGETTI */
+    
+    projects.forEach(function (project) {
+    
+      project.classList.remove("open");
       project.style.display = "none";
-    }
-
-  });
-
-}
-
-
-/* =====================================================
-   CREA MENU FILTRO MOBILE
-===================================================== */
-
-function createFilterMenu(project, filterType, options) {
-
-  /* Se esiste già un menu di questo tipo, lo apriamo/chiudiamo */
-  let menu = project.querySelector(
-    '.mobile-filter-menu[data-filter="' + filterType + '"]'
-  );
-
-  if (menu) {
-    menu.classList.toggle("show");
-    return;
-  }
-
-  /* Chiudi eventuali altri menu filtro */
-  document.querySelectorAll(".mobile-filter-menu").forEach(function(otherMenu) {
-    otherMenu.classList.remove("show");
-  });
-
-  menu = document.createElement("div");
-
-  menu.className = "mobile-filter-menu";
-  menu.dataset.filter = filterType;
-
-  options.forEach(function(option) {
-
-    const item = document.createElement("div");
-
-    item.className = "mobile-filter-menu-item";
-    item.textContent = option;
-
-    item.addEventListener("click", function(event) {
-
-      event.preventDefault();
-      event.stopPropagation();
-
-      if (filterType === "type") {
-        activeTypeFilter = option;
-      }
-
-      if (filterType === "year") {
-        activeYearFilter = option;
-      }
-
-      menu.classList.remove("show");
-
-      applyMobileFilters();
-
-      /* Porta al primo progetto visibile */
-      const firstVisible = Array.from(projects).find(function(p) {
-        return p.style.display !== "none";
-      });
-
-      if (firstVisible) {
-        firstVisible.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }
-
+    
     });
+    
+    
+    /* APRE IL PROGETTO SELEZIONATO */
+    
+    selectedProject.style.display = "block";
+    selectedProject.classList.add("open");
 
-    menu.appendChild(item);
+/* ===============================
+   PROJECT LINKS
+================================ */
+
+const projectLinks =
+  selectedProject.querySelectorAll(".project-links a");
+
+if (projectLinks.length > 0) {
+
+  const linksContainer =
+    document.createElement("div");
+
+  linksContainer.className = "project-links-visible";
+
+  projectLinks.forEach(function (link) {
+
+    const newLink =
+      document.createElement("a");
+
+    newLink.href = link.href;
+
+    newLink.textContent =
+      link.textContent.trim();
+
+    newLink.target = "_blank";
+
+    newLink.rel =
+      "noopener noreferrer";
+
+    const tooltip =
+      document.createElement("span");
+
+    tooltip.textContent =
+      "Check to see the full project";
+
+    newLink.appendChild(tooltip);
+
+    linksContainer.appendChild(newLink);
 
   });
 
-  const meta = project.querySelector(".project-meta");
-
-if (meta) {
-    meta.appendChild(menu);
+  document.body.appendChild(linksContainer);
 }
 
-  requestAnimationFrame(function() {
-    menu.classList.add("show");
+  /* NUMERO ATTIVO */
+  homeNumbers.forEach(function (num) {
+    num.classList.remove("active");
   });
 
-}
-
-
-/* =====================================================
-   MOBILE — CLICK SU TIPO
-===================================================== */
-
-document.querySelectorAll(".project-type").forEach(function(type) {
-
-  type.addEventListener("click", function(event) {
-
-    if (window.innerWidth > 600) return;
-
-    event.preventDefault();
-    event.stopPropagation();
-
-    createFilterMenu(
-      type.closest(".project"),
-      "type",
-      [
-        "ALL",
-        "Editorial",
-        "Animation",
-        "Typography",
-        "Brand identity"
-      ]
-    );
+  number.classList.add("active");
 
   });
-
 });
-
-
-/* =====================================================
-   MOBILE — CLICK SU ANNO
-===================================================== */
-
-document.querySelectorAll(".project-year").forEach(function(year) {
-
-  year.addEventListener("click", function(event) {
-
-    if (window.innerWidth > 600) return;
-
-    event.preventDefault();
-    event.stopPropagation();
-
-    createFilterMenu(
-      year.closest(".project"),
-      "year",
-      [
-        "ALL",
-        "2026",
-        "2025",
-        "2023"
-      ]
-    );
-
-  });
-
-});
-
-
-/* =====================================================
-   MOBILE — RESET FILTRI QUANDO TORNI ALL'INIZIO
-===================================================== */
-
-function resetMobileFilters() {
-
-  activeTypeFilter = "ALL";
-  activeYearFilter = "ALL";
-
-  projects.forEach(function(project) {
-    project.style.display = "";
-  });
-
-  document.querySelectorAll(".mobile-filter-menu").forEach(function(menu) {
-    menu.remove();
-  });
-
-}
-
-const aboutLink = document.querySelector(".about-link");
-const projectAboutLink = document.querySelector(".project-about-link");
-const aboutColumn = document.querySelector(".about-column");
-const aboutContent = document.querySelector(".about-content");
-const logo = document.querySelector(".logo");
-
-
- /* =====================================================
-   LOGO — TORNA ALL'INIZIO
-===================================================== */
-
-if (logo) {
-    logo.addEventListener("pointerdown", function () {
-  logo.style.transform = "scale(0.92)";
-});
-
-logo.addEventListener("pointerup", function () {
-  logo.style.transform = "scale(1)";
-});
-
-logo.addEventListener("pointercancel", function () {
-  logo.style.transform = "scale(1)";
-});
-
-logo.addEventListener("click", function (event) {
-
-  event.preventDefault();
-  event.stopPropagation();
-
-  /* =========================
-     MOBILE
-  ========================= */
-
-  if (window.innerWidth <= 600) {
-
-    resetMobileFilters();
-
-    /* Chiudi About */
-    document.body.classList.remove("mobile-about-open");
-
-    /* Chiudi tutti i progetti */
-    projects.forEach(function (project) {
-      project.classList.remove("open");
-    });
-
-    /* Chiudi i menu mobile */
-    document.querySelectorAll(".mobile-project-menu")
-      .forEach(function (menu) {
-        menu.classList.remove("show");
-      });
-
-    /* Torna all'inizio */
-    window.scrollTo(0, 0);
-
-    if (site) {
-      site.scrollTop = 0;
-    }
-
-    const projectsColumn = document.querySelector(".projects-column");
-
-    if (projectsColumn) {
-      projectsColumn.scrollTop = 0;
-    }
-
-    /* Riporta il primo progetto all'inizio */
-    const firstProject = projects[0];
-
-    if (firstProject) {
-      firstProject.scrollIntoView({
-        behavior: "auto",
-        block: "start"
-      });
-    }
-
-    return;
-  }
-
-
-  /* =========================
-     DESKTOP
-  ========================= */
-
-  projects.forEach(function (project) {
-    project.classList.remove("open");
-  });
-
-  document.querySelectorAll(".mobile-project-menu.show")
-    .forEach(function (menu) {
-      menu.classList.remove("show");
-    });
-
-  document.body.classList.remove("mobile-about-open");
-
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "auto"
-  });
-
-});
-
-}
-
-
-/* =====================================================
-   PROJECT TITLES
-===================================================== */
-
-projects.forEach(function (project) {
-
-  const title = project.querySelector(".project-title");
-
-  if (!title) return;
-
-  title.addEventListener("click", function (event) {
-
-    /* MOBILE */
-    if (window.innerWidth <= 600) {
-
-      event.preventDefault();
-      event.stopPropagation();
-
-      let menu = project.querySelector(".mobile-project-menu");
-
-      if (menu) {
-        menu.classList.toggle("show");
-        return;
-      }
-
-      menu = document.createElement("div");
-      menu.className = "mobile-project-menu";
-
-      projects.forEach(function (otherProject) {
-
-        if (otherProject === project) return;
-
-        const otherTitle = otherProject.querySelector(".project-title");
-
-        if (!otherTitle) return;
-
-        const item = document.createElement("div");
-        item.className = "mobile-project-menu-item";
-        item.textContent = otherTitle.textContent.trim();
-
-        item.addEventListener("click", function (event) {
-          event.preventDefault();
-          event.stopPropagation();
-          menu.classList.remove("show");
-          otherProject.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
+    
+    
+      /* =====================================================
+         ORDINE CRONOLOGICO — DESKTOP
+      ===================================================== */
+    
+      document
+        .querySelectorAll(".project-year")
+        .forEach(function (year) {
+    
+          year.addEventListener("click", function (event) {
+    
+            if (window.innerWidth <= 600) return;
+    
+            event.preventDefault();
+            event.stopPropagation();
+    
+            if (!projectsList) return;
+    
+    
+            /* TORNA ALL'ORDINE ORIGINALE */
+    
+            if (chronologicalOrder) {
+    
+              originalOrder.forEach(function (project) {
+                projectsList.appendChild(project);
+              });
+    
+              chronologicalOrder = false;
+    
+              return;
+            }
+    
+    
+            /* ORDINA DAL PIÙ RECENTE AL PIÙ VECCHIO */
+    
+            const sortedProjects =
+              Array.from(projects).sort(function (a, b) {
+    
+                const yearA = parseInt(
+                  a.querySelector(".project-year").textContent
+                );
+    
+                const yearB = parseInt(
+                  b.querySelector(".project-year").textContent
+                );
+    
+                return yearB - yearA;
+    
+              });
+    
+    
+            sortedProjects.forEach(function (project) {
+              projectsList.appendChild(project);
+            });
+    
+            chronologicalOrder = true;
+    
           });
+    
         });
-
-        menu.appendChild(item);
-
-      });
-
-      const meta = project.querySelector(".project-meta");
-      if (meta) meta.after(menu);
-
-      requestAnimationFrame(function () {
-        menu.classList.add("show");
-      });
-
-      return;
-    }
-
-    /* DESKTOP */
-    event.preventDefault();
-
-    const wasOpen = project.classList.contains("open");
-
-    projects.forEach(function (otherProject) {
-      otherProject.classList.remove("open");
-    });
-
-    if (!wasOpen) {
-      project.classList.add("open");
-      setTimeout(function () {
-        project.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
+    
+    
+      /* =====================================================
+         MOBILE — FILTRI
+      ===================================================== */
+    
+      function applyMobileFilters() {
+    
+        if (window.innerWidth > 600) return;
+    
+        projects.forEach(function (project) {
+    
+          const typeElement =
+            project.querySelector(".project-type");
+    
+          const yearElement =
+            project.querySelector(".project-year");
+    
+          if (!typeElement || !yearElement) return;
+    
+          const type =
+            typeElement.textContent.trim();
+    
+          const year =
+            yearElement.textContent.trim();
+    
+    
+          const typeMatch =
+            activeTypeFilter === "ALL" ||
+            type === activeTypeFilter;
+    
+          const yearMatch =
+            activeYearFilter === "ALL" ||
+            year === activeYearFilter;
+    
+    
+          if (typeMatch && yearMatch) {
+            project.style.display = "";
+          } else {
+            project.style.display = "none";
+          }
+    
         });
-      }, 50);
-    }
+    
+      }
+    
+    
+      /* =====================================================
+         CREA MENU FILTRO MOBILE
+      ===================================================== */
+    
+      function createFilterMenu(
+        project,
+        filterType,
+        options
+      ) {
+    
+        if (!project) return;
+    
+    
+        /* SE ESISTE GIÀ → APRI / CHIUDI */
+    
+        let menu =
+          project.querySelector(
+            '.mobile-filter-menu[data-filter="' +
+            filterType +
+            '"]'
+          );
+    
+        if (menu) {
+    
+          menu.classList.toggle("show");
+    
+          return;
+    
+        }
+    
+    
+        /* CHIUDE GLI ALTRI MENU */
+    
+        document
+          .querySelectorAll(".mobile-filter-menu")
+          .forEach(function (otherMenu) {
+    
+            otherMenu.classList.remove("show");
+    
+          });
+    
+    
+        /* CREA MENU */
+    
+        menu = document.createElement("div");
+    
+        menu.className = "mobile-filter-menu";
+        menu.dataset.filter = filterType;
+    
+    
+        /* CREA OPZIONI */
+    
+        options.forEach(function (option) {
+    
+          const item =
+            document.createElement("div");
+    
+          item.className =
+            "mobile-filter-menu-item";
+    
+          item.textContent = option;
+    
+    
+          item.addEventListener(
+            "click",
+            function (event) {
+    
+              event.preventDefault();
+              event.stopPropagation();
+    
+    
+              if (filterType === "type") {
+                activeTypeFilter = option;
+              }
+    
+    
+              if (filterType === "year") {
+                activeYearFilter = option;
+              }
+    
+    
+              menu.classList.remove("show");
+    
+              applyMobileFilters();
+    
+    
+              /* PRIMO PROGETTO VISIBILE */
+    
+              const firstVisible =
+                Array.from(projects).find(function (p) {
+    
+                  return p.style.display !== "none";
+    
+                });
+    
+    
+              if (firstVisible) {
+    
+                firstVisible.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start"
+                });
+    
+              }
+    
+            }
+          );
+    
+    
+          menu.appendChild(item);
+    
+        });
+    
+    
+        /* INSERISCE MENU */
+    
+        const meta =
+          project.querySelector(".project-meta");
+    
+        if (meta) {
+          meta.appendChild(menu);
+        }
+    
+    
+        requestAnimationFrame(function () {
+          menu.classList.add("show");
+        });
+    
+      }
+    
+    
+      /* =====================================================
+         MOBILE — CLICK SU TIPO
+      ===================================================== */
+    
+      document
+        .querySelectorAll(".project-type")
+        .forEach(function (type) {
+    
+          type.addEventListener(
+            "click",
+            function (event) {
+    
+              if (window.innerWidth > 600) return;
+    
+              event.preventDefault();
+              event.stopPropagation();
+    
+    
+              createFilterMenu(
+                type.closest(".project"),
+                "type",
+                [
+                  "ALL",
+                  "Editorial",
+                  "Animation",
+                  "Typography",
+                  "Brand identity"
+                ]
+              );
+    
+            }
+          );
+    
+        });
+    
+    
+      /* =====================================================
+         MOBILE — CLICK SU ANNO
+      ===================================================== */
+    
+      document
+        .querySelectorAll(".project-year")
+        .forEach(function (year) {
+    
+          year.addEventListener(
+            "click",
+            function (event) {
+    
+              if (window.innerWidth > 600) return;
+    
+              event.preventDefault();
+              event.stopPropagation();
+    
+    
+              createFilterMenu(
+                year.closest(".project"),
+                "year",
+                [
+                  "ALL",
+                  "2026",
+                  "2025",
+                  "2023"
+                ]
+              );
+    
+            }
+          );
+    
+        });
+    
+    
+      /* =====================================================
+         MOBILE — RESET FILTRI
+      ===================================================== */
+    
+      function resetMobileFilters() {
+    
+        activeTypeFilter = "ALL";
+        activeYearFilter = "ALL";
+    
+    
+        projects.forEach(function (project) {
+          project.style.display = "";
+        });
+    
+    
+        document
+          .querySelectorAll(".mobile-filter-menu")
+          .forEach(function (menu) {
+            menu.remove();
+          });
+    
+      }
+    
+    
+      /* =====================================================
+         ELEMENTI ABOUT + LOGO
+      ===================================================== */
+    
+      const aboutLink =
+        document.querySelector(".about-link");
+    
+      const projectAboutLink =
+        document.querySelector(".project-about-link");
+    
+      const aboutColumn =
+        document.querySelector(".about-column");
+    
+      const aboutContent =
+        document.querySelector(".about-content");
+    
+      const logo =
+        document.querySelector(".logo");
+    
+    
+      /* =====================================================
+         LOGO — TORNA ALLA HOME
+      ===================================================== */
+    
+      if (logo) {
+    
+        /* PRESSIONE */
+    
+        logo.addEventListener(
+          "pointerdown",
+          function () {
+    
+            logo.style.transform = "scale(0.92)";
+    
+          }
+        );
+    
+    
+        /* RILASCIO */
+    
+        logo.addEventListener(
+          "pointerup",
+          function () {
+    
+            logo.style.transform = "scale(1)";
+    
+          }
+        );
+    
+    
+        /* CANCELLAZIONE */
+    
+        logo.addEventListener(
+          "pointercancel",
+          function () {
+    
+            logo.style.transform = "scale(1)";
+    
+          }
+        );
+    
+    
+        /* CLICK */
+    
+        logo.addEventListener(
+          "click",
+          function (event) {
+    
+            event.preventDefault();
+            event.stopPropagation();
 
-  });
+            /* CHIUDE IL LINK POPUP */
+            const popup = document.querySelector(".link-popup");
 
-});
+            if (popup) {
+            popup.remove();
+            }
+    
+    
+            /* TORNA ALLA HOME */
 
+            document.body.classList.remove("about-open");
+    
+            document.body.classList.remove(
+              "project-layer-open"
+            );
+    
+            document.body.classList.remove(
+              "home-view-project"
+            );
+    
+            document.body.classList.add(
+              "home-view"
+            );
+    
+    
+            /* CHIUDE TUTTI I PROGETTI */
+    
+            projects.forEach(function (project) {
+    
+              project.classList.remove("open");
+              project.style.display = "none";
+    
+            });
+    
+    
+            /* CHIUDE ABOUT MOBILE */
+    
+            document.body.classList.remove(
+              "mobile-about-open"
+            );
+    
+    
+            /* TORNA IN CIMA */
+    
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: "auto"
+            });
+    
+    
+            if (site) {
+              site.scrollTop = 0;
+            }
+    
+          }
+        );
+    
+      }
+    
+    
+      /* =====================================================
+         PROJECT TITLES
+         
+         I TITOLI NON SONO CLICCABILI.
+      ===================================================== */
+    
+    
+      /* =====================================================
+         ABOUT — APRE LA SEZIONE BLUR
+      ===================================================== */
+    
+      if (projectAboutLink) {
+    
+        projectAboutLink.addEventListener(
+          "click",
+          function (event) {
+    
+            event.preventDefault();
+            event.stopPropagation();
+    
+    
+            /* =========================
+               MOBILE
+            ========================= */
+    
+            if (window.innerWidth <= 600) {
+    
+              projects.forEach(function (project) {
+    
+                project.classList.remove("open");
+    
+              });
+    
+    
+              document.body.classList.add(
+                "mobile-about-open"
+              );
+    
+    
+              window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "instant"
+              });
+    
+    
+              if (aboutColumn) {
+                aboutColumn.scrollTop = 0;
+              }
+    
+    
+              return;
+    
+            }
+    
+    
+            /* =========================
+   DESKTOP
+========================= */
 
-/* =====================================================
-   ABOUT
-===================================================== */
+document.body.classList.toggle("about-open");
 
-if (projectAboutLink) {
-
-  projectAboutLink.addEventListener("click", function (event) {
-
-    event.preventDefault();
-    event.stopPropagation();
-
-    /* MOBILE */
-    if (window.innerWidth <= 600) {
-
-      projects.forEach(function (project) {
-        project.classList.remove("open");
-      });
-
-      document.body.classList.add("mobile-about-open");
-
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "instant"
-      });
-
-      if (aboutColumn) aboutColumn.scrollTop = 0;
-
-      return;
-    }
-
-    /* DESKTOP */
-    projects.forEach(function (project) {
-      project.classList.remove("open");
-    });
-
-    window.scrollTo(0, 0);
-
-    setTimeout(function () {
-      if (aboutColumn) aboutColumn.scrollTop = 0;
-      if (aboutContent) aboutContent.scrollTop = 0;
-    }, 100);
-
-  });
-
+if (aboutColumn) {
+  aboutColumn.scrollTop = 0;
 }
 
-
-/* =====================================================
-   ABOUT LINK INTERNO — QUANDO ABOUT È APERTO
+if (aboutContent) {
+  aboutContent.scrollTop = 0;
+}
+    
+          }
+        );
+    
+      }
+    
+    
+     /* =====================================================
+   ABOUT LINK INTERNO
 ===================================================== */
 
 if (aboutLink) {
 
-  aboutLink.addEventListener("click", function (event) {
+aboutLink.addEventListener(
+  "click",
+  function (event) {
 
     event.preventDefault();
     event.stopPropagation();
 
+
     /* MOBILE */
+
     if (window.innerWidth <= 600) {
-      document.body.classList.remove("mobile-about-open");
+
+      document.body.classList.remove(
+        "mobile-about-open"
+      );
+
       window.scrollTo({
         top: 0,
         left: 0,
         behavior: "instant"
       });
+
       return;
+
     }
+
 
     /* DESKTOP */
-    projects.forEach(function (project) {
-      project.classList.remove("open");
-    });
 
-    if (aboutContent) aboutContent.scrollTop = 0;
+    document.body.classList.remove(
+      "about-open"
+    );
 
-  });
-
-}
-
-
-/* =====================================================
-   CLICK SUL VUOTO
-===================================================== */
-
-if (site) {
-
-  site.addEventListener("click", function (event) {
-
-    if (event.target.closest(".project")) return;
-    if (event.target.closest(".logo")) return;
-    if (event.target.closest(".about-link")) return;
-    if (event.target.closest(".project-about-link")) return;
-
-    projects.forEach(function (project) {
-      project.classList.remove("open");
-    });
-
-  });
-
-}
-
-
-/* =====================================================
-   AUDIO VIDEO — DESKTOP HOVER + MOBILE VISIBILITY
-===================================================== */
-
-const soundVideos = document.querySelectorAll(".hover-sound");
-
-soundVideos.forEach(function (video) {
-
-  const container = video.closest(".image-placeholder");
-  const project = video.closest(".project");
-
-  if (!container || !project) return;
-
-
-  /* =========================
-     DESKTOP — HOVER
-  ========================= */
-
-  container.addEventListener("mouseenter", function () {
-
-    if (window.innerWidth <= 600) return;
-
-    if (!project.classList.contains("open")) {
-      video.muted = true;
-      return;
+    if (aboutContent) {
+      aboutContent.scrollTop = 0;
     }
 
-    setTimeout(function () {
+  }
+);
 
-      if (
-        project.classList.contains("open") &&
-        container.matches(":hover")
-      ) {
-        video.muted = false;
-        video.volume = 1;
-        video.play();
+}
+
+
+/* =====================================================
+ CHIUDI ABOUT CLICCANDO SUL VUOTO
+===================================================== */
+
+
+
+aboutColumn.addEventListener("click", function (event) {
+
+if (event.target.closest(".photography-gallery")) {
+  return;
+}
+
+if (!event.target.closest(".about-content")) {
+  event.preventDefault();
+  event.stopPropagation();
+  document.body.classList.remove("about-open");
+}
+
+});
+
+
+
+
+
+
+/* =====================================================
+ CLICK SUL VUOTO
+===================================================== */
+    
+      if (site) {
+    
+        site.addEventListener(
+          "click",
+          function (event) {
+    
+            /* NUMERI HOME */
+            if (event.target.closest(".home-numbers")) {
+              return;
+            }
+    
+    
+            /* PROGETTO */
+            if (event.target.closest(".project")) {
+              return;
+            }
+    
+    
+            /* LOGO */
+            if (event.target.closest(".logo")) {
+              return;
+            }
+    
+    
+            /* ABOUT */
+            if (event.target.closest(".about-link")) {
+              return;
+            }
+    
+    
+            if (
+              event.target.closest(".project-about-link")
+            ) {
+              return;
+            }
+    
+    
+            /* CHIUDE IL PROGETTO */
+    
+            projects.forEach(function (project) {
+    
+              project.classList.remove("open");
+              project.style.display = "none";
+    
+            });
+    
+    
+            document.body.classList.remove(
+              "project-layer-open"
+            );
+    
+          }
+        );
+    
       }
-
-    }, 300);
-
-  });
-
-
-  container.addEventListener("mouseleave", function () {
-
-    if (window.innerWidth <= 600) return;
-
-    video.muted = true;
-
-  });
-
-
-  /* =========================
-     MOBILE — VIDEO VISIBILE
-  ========================= */
-
-  const observer = new IntersectionObserver(function (entries) {
-
-    entries.forEach(function (entry) {
-
-      if (window.innerWidth > 600) return;
-
-      if (entry.isIntersecting) {
-
-        video.muted = false;
-        video.volume = 1;
-
-        video.play().catch(function () {
-          /* Il browser può bloccare l'audio automatico */
-        });
-
-      } else {
-
-        video.muted = true;
-
-      }
-
+    
+    
+      /* =====================================================
+         AUDIO VIDEO
+         DESKTOP HOVER + MOBILE VISIBILITY
+      ===================================================== */
+    
+      const soundVideos =
+        document.querySelectorAll(".hover-sound");
+    
+    
+      soundVideos.forEach(function (video) {
+    
+        const container =
+          video.closest(".image-placeholder");
+    
+        const project =
+          video.closest(".project");
+    
+    
+        if (!container || !project) return;
+    
+    
+        /* =========================
+           DESKTOP — HOVER
+        ========================= */
+    
+        container.addEventListener(
+          "mouseenter",
+          function () {
+    
+            if (window.innerWidth <= 600) return;
+    
+    
+            if (!project.classList.contains("open")) {
+    
+              video.muted = true;
+    
+              return;
+    
+            }
+    
+    
+            setTimeout(
+              function () {
+    
+                if (
+                  project.classList.contains("open") &&
+                  container.matches(":hover")
+                ) {
+    
+                  video.muted = false;
+                  video.volume = 1;
+    
+    
+                  video.play().catch(
+                    function () {}
+                  );
+    
+                }
+    
+              },
+              300
+            );
+    
+          }
+        );
+    
+    
+        container.addEventListener(
+          "mouseleave",
+          function () {
+    
+            if (window.innerWidth <= 600) return;
+    
+            video.muted = true;
+    
+          }
+        );
+    
+    
+        /* =========================
+           MOBILE — VIDEO VISIBILE
+        ========================= */
+    
+        const observer =
+          new IntersectionObserver(
+            function (entries) {
+    
+              entries.forEach(
+                function (entry) {
+    
+                  if (window.innerWidth > 600) {
+                    return;
+                  }
+    
+    
+                  if (entry.isIntersecting) {
+    
+                    video.muted = false;
+                    video.volume = 1;
+    
+    
+                    video.play().catch(
+                      function () {}
+                    );
+    
+                  } else {
+    
+                    video.muted = true;
+    
+                  }
+    
+                }
+              );
+    
+            },
+            {
+              threshold: 0.6
+            }
+          );
+    
+    
+        observer.observe(container);
+    
+      });
+    
+    
     });
-
-  }, {
-    threshold: 0.6
-  });
-
-  observer.observe(container);
-
-});
-
-});
     </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  
+    const trigger = document.querySelector(".photography-trigger");
+    const gallery = document.querySelector(".photography-gallery");
+    const images = document.querySelector(".photography-images");
+  
+    if (!trigger || !gallery || !images) {
+      console.log("PHOTOGRAPHY: elemento mancante");
+      return;
+    }
+  
+    const buttons = gallery.querySelectorAll(".photo-view");
+    const photos = images.querySelectorAll("img");
+  
+  
+    /* =========================
+   OPEN / CLOSE
+========================= */
 
+trigger.addEventListener("click", function (event) {
+
+event.preventDefault();
+event.stopPropagation();
+
+if (document.body.classList.contains("photography-open")) {
+
+  // CHIUDI
+  document.body.classList.remove("photography-open");
+  trigger.classList.remove("active");
+
+} else {
+
+  // APRI
+  document.body.classList.add("photography-open");
+  trigger.classList.add("active");
+
+  setFull();
+
+}
+
+});
+  
+  
+function setFull() {
+
+images.className = "photography-images full-view";
+
+images.style.cssText = `
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  height: calc(100% - 30px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+`;
+
+photos.forEach(function (img) {
+
+  img.style.cssText = `
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    margin: 0 0 15px 0 !important;
+    padding: 0 !important;
+  `;
+
+});
+
+setActive("full");
+}
+  
+  
+    /* =========================
+       GRID
+    ========================= */
+  
+    function setGrid() {
+  
+      images.className = "photography-images grid-view";
+  
+      images.style.cssText = `
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        grid-auto-flow: row !important;
+        gap: 0 !important;
+        align-content: start !important;
+        align-items: start !important;
+        width: 100% !important;
+        height: calc(100% - 30px) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+      `;
+  
+      photos.forEach(function (img) {
+  
+        img.style.cssText = `
+          display: block !important;
+          width: 100% !important;
+          height: auto !important;
+          max-width: none !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          grid-column: auto !important;
+          position: static !important;
+          float: none !important;
+        `;
+  
+      });
+  
+      setActive("grid");
+    }
+  
+  
+    /* =========================
+       ACTIVE BUTTON
+    ========================= */
+  
+    function setActive(view) {
+  
+      buttons.forEach(function (button) {
+  
+        button.classList.toggle(
+          "active",
+          button.dataset.view === view
+        );
+  
+      });
+  
+    }
+  
+  
+    /* =========================
+       BUTTONS
+    ========================= */
+  
+    buttons.forEach(function (button) {
+  
+      button.addEventListener("click", function (event) {
+  
+        event.preventDefault();
+        event.stopPropagation();
+  
+        if (button.dataset.view === "grid") {
+          setGrid();
+        }
+  
+        if (button.dataset.view === "full") {
+          setFull();
+        }
+  
+      });
+  
+    });
+  
+  });
+  </script>
 
 
 </body>
