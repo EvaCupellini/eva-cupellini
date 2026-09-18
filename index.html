@@ -44,15 +44,70 @@
       </header>
 
       <div class="home-numbers">
-        <div><span class="home-number">01</span><span class="home-title">SPIRALIS</span></div>
-        <div><span class="home-number">02</span><span class="home-title">COEVO</span></div>
-        <div><span class="home-number">03</span><span class="home-title">Tokyo Demons</span></div>
-        <div><span class="home-number">04</span><span class="home-title">Angelica</span></div>
-        <div><span class="home-number">05</span><span class="home-title">A tiny playground</span></div>
-        <div><span class="home-number">06</span><span class="home-title">Kuchidoke</span></div>
-        <div><span class="home-number">07</span><span class="home-title">Kirinoki</span></div>
-        <div><span class="home-number">08</span><span class="home-title">Neptuna</span></div>
-        <div><span class="home-number">09</span><span class="home-title">Vesuvio Spontaneo</span></div>
+
+        <div>
+          <span class="home-number">01</span>
+          <span class="home-title">SPIRALIS</span>
+          <img class="home-preview preview-bw" src="media/perdecaynero.png" alt="">
+          <img class="home-preview preview-color" src="media/perdecay.png" alt="">
+        </div>
+      
+        <div>
+          <span class="home-number">02</span>
+          <span class="home-title">COEVO</span>
+          <img class="home-preview preview-bw" src="media/percoevonero.png" alt="">
+          <img class="home-preview preview-color" src="media/percoevo.png" alt="">
+        </div>
+      
+        <div>
+          <span class="home-number">03</span>
+          <span class="home-title">Tokyo Demons</span>
+          <img class="home-preview preview-bw" src="media/perdemonsnero.png" alt="">
+          <img class="home-preview preview-color" src="media/perdemons.png" alt="">
+        </div>
+      
+        <div>
+          <span class="home-number">04</span>
+          <span class="home-title">Angelica</span>
+          <img class="home-preview preview-bw" src="media/perangelicanero.png" alt="">
+          <img class="home-preview preview-color" src="media/perangelica.png" alt="">
+        </div>
+      
+        <div>
+          <span class="home-number">05</span>
+          <span class="home-title">A tiny playground</span>
+          <img class="home-preview preview-bw" src="media/per tinynero.png" alt="">
+          <img class="home-preview preview-color" src="media/per tiny.png" alt="">
+        </div>
+      
+        <div>
+          <span class="home-number">06</span>
+          <span class="home-title">Kuchidoke</span>
+          <img class="home-preview preview-bw" src="media/perkuchidokenero.png" alt="">
+          <img class="home-preview preview-color" src="media/perkuchidoke.png" alt="">
+        </div>
+      
+        <div>
+          <span class="home-number">07</span>
+          <span class="home-title">Kirinoki</span>
+          <img class="home-preview preview-bw" src="media/perkirinokinero.png" alt="">
+          <img class="home-preview preview-color" src="media/perkirinoki.png" alt="">
+        </div>
+      
+        <div>
+          <span class="home-number">08</span>
+          <span class="home-title">Neptuna</span>
+          <img class="home-preview preview-bw" src="media/perneptunanero.png" alt="">
+          <img class="home-preview preview-color" src="media/perneptuna.png" alt="">
+        </div>
+      
+        <div>
+          <span class="home-number">09</span>
+          <span class="home-title">Vesuvio Spontaneo</span>
+          <img class="home-preview preview-bw" src="media/pervesuvionero.png" alt="">
+          <img class="home-preview preview-color" src="media/pervesuvio.png" alt="">
+        </div>
+      
       </div>
 
       <div class="projects-list">
@@ -1140,19 +1195,93 @@ area.addEventListener("mouseenter", function () {
 
   homeNumbers.forEach(function (number) {
     number.classList.remove("hover-active");
+    number.classList.remove("press-active");
   });
 
   homeNumbers[index].classList.add("hover-active");
 
 });
 
+area.addEventListener("mousedown", function () {
+
+  homeNumbers[index].classList.add("press-active");
+
+});
+
 area.addEventListener("mouseleave", function () {
 
   homeNumbers[index].classList.remove("hover-active");
+  homeNumbers[index].classList.remove("press-active");
+
+});
+
+area.addEventListener("touchstart", function () {
+
+if (window.innerWidth <= 600) {
+
+  homeNumbers[index].classList.add("press-active");
+
+}
+
+}, { passive: true });
+
+area.addEventListener("touchend", function () {
+
+if (window.innerWidth <= 600) {
+
+  homeNumbers[index].classList.remove("press-active");
+
+}
+
+});
+
+area.addEventListener("touchcancel", function () {
+
+if (window.innerWidth <= 600) {
+
+  homeNumbers[index].classList.remove("press-active");
+
+}
+
+});
+
+/* =========================================
+   MOBILE — PREVIEW MENTRE SI PREME IL TITOLO
+========================================= */
+
+homeNumbers.forEach(function (number) {
+
+number.addEventListener("touchstart", function () {
+
+  if (window.innerWidth > 600) return;
+
+  number.classList.add("press-active");
+
+}, { passive: true });
+
+
+number.addEventListener("touchend", function () {
+
+  if (window.innerWidth > 600) return;
+
+  number.classList.remove("press-active");
+
+});
+
+
+number.addEventListener("touchcancel", function () {
+
+  if (window.innerWidth > 600) return;
+
+  number.classList.remove("press-active");
 
 });
 
 });
+
+});
+
+
 
 
 /* CLICK SULLE COLONNE */
@@ -1190,22 +1319,36 @@ area.addEventListener("click", function (event) {
     /* APRE IL LAYER */
     
     document.body.classList.add("project-layer-open");
+
+    homeNumbers.forEach(function (num) {
+  num.classList.remove("hover-active");
+});
+
+    /* NASCONDE LE PREVIEW DELLA HOME */
+
+homeNumbers.forEach(function (num) {
+  num.classList.remove("active");
+  num.classList.remove("hover-active");
+});
     
-    
-    /* CHIUDE TUTTI GLI ALTRI PROGETTI */
     
     projects.forEach(function (project) {
-    
-      project.classList.remove("open");
-      project.style.display = "none";
-    
-    });
-    
-    
-    /* APRE IL PROGETTO SELEZIONATO */
-    
-    selectedProject.style.display = "block";
-    selectedProject.classList.add("open");
+  project.classList.remove("open");
+
+  if (window.innerWidth > 600) {
+    project.style.display = "none";
+  } else {
+    project.style.display = "";
+  }
+});
+
+selectedProject.classList.add("open");
+
+if (window.innerWidth > 600) {
+  selectedProject.style.display = "block";
+} else {
+  selectedProject.style.display = "";
+}
 
 /* ===============================
    PROJECT LINKS
@@ -1263,6 +1406,7 @@ const tooltip =
   });
 
   number.classList.add("active");
+
 
   });
 });

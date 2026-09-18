@@ -18,9 +18,23 @@ body {
 body {
   background: #ffffff;
   color: #000000;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "GT Sectra", serif;
   font-size: 12px;
   overflow: hidden;
+}
+
+@font-face {
+  font-family: "GT Alpina";
+  src: url("fonts/GT-Sectra-Regular-Trial") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Maru";
+  src: url("fonts/GT-Maru-Regular-Trial.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
 }
 
 
@@ -78,7 +92,7 @@ body {
   display: inline-block;
   color: #acacac;
 
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "GT Sectra", serif;
 
   font-size: 32px;
   line-height: 1;
@@ -3117,7 +3131,7 @@ body.home-view.project-layer-open
 
     white-space: nowrap;
 
-    font-family: Arial, sans-serif;
+    font-family: "GT Sectra", serif;
     font-size: 11px;
     color: #111;
 
@@ -3158,7 +3172,7 @@ body.home-view:not(.project-layer-open) .home-numbers > div::before {
 
   transform: translateX(-50%);
 
-  font-family: Arial, sans-serif;
+  font-family: "GT Sectra", serif;
   font-size: 90px;
   font-weight: normal;
 
@@ -3341,7 +3355,7 @@ body.photography-open .photography-gallery {
 
   padding: 0;
 
-  font-family: Arial, sans-serif;
+  font-family: "GT Sectra", serif;
   font-size: 10px;
 
   cursor: pointer;
@@ -4160,9 +4174,279 @@ body.project-layer-open .project-links-visible {
   display: flex;
 }
 
+@media screen and (min-width: 601px) {
+
+  /* FOTO NASCOSTA */
+  body.home-view .home-numbers > div .home-preview {
+    position: fixed;
+
+    left: 50%;
+    top: 150px;
+
+    width: 500px;
+    height: 240px;
+
+    object-fit: contain;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateX(-50%) translateY(10px);
+
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+
+    z-index: 10003;
+  }
+
+  body.home-view .home-numbers > div:nth-child(1) .home-preview {
+    width: 720px;
+    height: 340px;
+    left: 50%;
+    top: 80px;
+    transform: translateX(-50%) translateY(-20px);
+  }
+
+  body.home-view .home-numbers > div:nth-child(3) .home-preview {
+    width: 800px;
+    height: 350px;
+    left: 50%;
+    top: 110px;
+    transform: translateX(-50%) translateY(-20px);
+  }
+
+  body.home-view .home-numbers > div:nth-child(4) .home-preview {
+    width: 650px;
+    height: 400px;
+    left: 50%;
+    top: 80px;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  
+
+  body.home-view .home-numbers > div:nth-child(8) .home-preview {
+    width: 650px;
+    height: 300px;
+    left: 50%;
+    top: 110px;
+    transform: translateX(-50%) translateY(-20px);
+  }
+
+  body.home-view .home-numbers > div:nth-child(6) .home-preview {
+    width: 180px;
+    height: 300px;
+    left: 50%;
+    top: 100px;
+    transform: translateX(-80%) translateY(70px) rotate(-7deg);
+    transition: none !important;
+  }
+
+  body.home-view .home-numbers > div:nth-child(7) .home-preview {
+    width: 400px;
+    height: 300px;
+    left: 50%;
+    top: 90px;
+    transform: translateX(-80%) translateY(70px) rotate(-7deg);
+    transition: none !important;
+  }
+
+  body.home-view .home-numbers > div:nth-child(9) .home-preview {
+    width: 400px;
+    height: 290px;
+    left: 50%;
+    top: 170px;
+    transform: translateX(-80%) translateY(70px) rotate(-7deg);
+    transition: none !important;
+  }
+
+  /* FOTO + TITOLO QUANDO PASSI SULLA COLONNA */
+body.home-view .home-numbers > div.hover-active .home-preview,
+body.home-view .home-numbers > div:hover .home-preview {
+  transform: translateX(-50%) translateY(0);
+}
+
+  /* ROTAZIONE FISSA DELLA FOTO 7 */
+
+body.home-view .home-numbers > div:nth-child(7):hover .home-preview,
+body.home-view .home-numbers > div:nth-child(7).hover-active .home-preview {
+  transform: translateX(-50%) translateY(0) rotate(30deg) !important;
+}
 
 
 
+/* =========================================
+   PREVIEW — HOVER / PREMUTO
+========================================= */
+
+/* entrambe nascoste di base */
+body.home-view .home-numbers > div .preview-bw,
+body.home-view .home-numbers > div .preview-color {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* HOVER → B/N */
+body.home-view .home-numbers > div:hover .preview-bw,
+body.home-view .home-numbers > div.hover-active .preview-bw {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateX(-50%) translateY(0);
+}
+
+/* PREMUTO → COLORE */
+body.home-view .home-numbers > div:active .preview-bw {
+  opacity: 0;
+  visibility: hidden;
+}
+
+body.home-view .home-numbers > div:active .preview-color {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateX(-50%) translateY(0);
+}
+
+/* =========================================
+   QUANDO IL PROGETTO È APERTO
+   LA PREVIEW DEVE SPARIRE COMPLETAMENTE
+========================================= */
+
+body.project-layer-open .home-preview {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+body.project-layer-open .home-numbers > div .home-preview {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  display: none !important;
+}
+
+/* =========================================
+   COLONNA PREMUTA → COLORE
+========================================= */
+
+body.home-view .home-numbers > div.press-active .preview-bw {
+  opacity: 0;
+  visibility: hidden;
+}
+
+body.home-view .home-numbers > div.press-active .preview-color {
+  opacity: 1;
+  visibility: visible;
+}
+
+}
+
+/* =========================================
+   MOBILE — PREVIEW AL PRESS
+========================================= */
+
+@media screen and (max-width: 600px) {
+
+  body.home-view .home-numbers > div .home-preview {
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    width: 85vw;
+    height: 45vh;
+
+    object-fit: contain;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 10002;
+  }
+
+  /* NESSUNA PREVIEW NORMALE */
+  body.home-view .home-numbers > div .preview-bw,
+  body.home-view .home-numbers > div .preview-color {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /* PREMUTO → IMMAGINE */
+  body.home-view .home-numbers > div.press-active .preview-color {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* QUANDO SI APRE IL PROGETTO → SPARISCE */
+  body.project-layer-open .home-numbers > div .home-preview {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    display: none !important;
+  }
+
+  /* Nasconde SOLO la scritta generata dall'hover/press */
+  body.home-view .home-numbers > div::before {
+    display: none !important;
+  }
+
+  /* BASE */
+body.home-view .home-numbers > div .home-preview {
+  left: 280px;
+  width: 65vw;
+  height: auto;
+}
+
+/* 1 — SPIRALIS */
+body.home-view .home-numbers > div:nth-child(1) .home-preview {
+  width: 100vw;
+}
+
+/* 2 — COEVO */
+body.home-view .home-numbers > div:nth-child(2) .home-preview {
+  width: 50vw;;
+}
+
+/* 3 — TOKYO DEMONS */
+body.home-view .home-numbers > div:nth-child(3) .home-preview {
+  width: 85vw;;
+}
+
+/* 5 — A TINY PLAYGROUND */
+body.home-view .home-numbers > div:nth-child(5) .home-preview {
+  width: 55vw;
+  left: 260px;
+}
+
+/* 6 — KUCHIDOKE */
+body.home-view .home-numbers > div:nth-child(6) .home-preview {
+  width: 45vw;
+  left: 290px;
+}
+
+/* 7 — KIRINOKI */
+body.home-view .home-numbers > div:nth-child(7) .home-preview {
+  width: 65vw;
+  top: 10px;
+  left: 130px;
+  transform: rotate(80deg);
+}
+
+/* 8 — NEPTUNA */
+body.home-view .home-numbers > div:nth-child(8) .home-preview {
+  width: 85vw;
+}
+
+/* 9 — VESUVIO */
+body.home-view .home-numbers > div:nth-child(9) .home-preview {
+  width: 55vw;
+  left: 250px;
+}
+
+}
 
 
 
