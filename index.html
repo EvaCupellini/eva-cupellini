@@ -10,38 +10,25 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-  
+
     const intro = document.querySelector(".intro");
-  
+
     if (!intro) return;
-  
-    const introSound = new Audio(
-      "media/freesound_community-socket-wrench-2-26455.mp3"
-    );
-  
-    introSound.volume = 1;
-  
-    /* Sblocca l'audio al primo click */
-    document.addEventListener("click", function () {
-      introSound.play().catch(function () {
-        console.log("Audio non disponibile");
-      });
-    }, { once: true });
-  
+
     /* Scompare dopo 2 secondi */
     setTimeout(function () {
-  
+
       intro.style.opacity = "0";
       intro.style.pointerEvents = "none";
-  
+
       setTimeout(function () {
         intro.remove();
       }, 300);
-  
+
     }, 2000);
-  
+
   });
-  </script>
+</script>
 <body class="home-view">
   <div class="intro">
     <img src="media/eva-favicon.png" class="intro-wrench" alt="">
@@ -57,15 +44,15 @@
       </header>
 
       <div class="home-numbers">
-        <div>01</div>
-        <div>02</div>
-        <div>03</div>
-        <div>04</div>
-        <div>05</div>
-        <div>06</div>
-        <div>07</div>
-        <div>08</div>
-        <div>09</div>
+        <div><span class="home-number">01</span><span class="home-title">SPIRALIS</span></div>
+        <div><span class="home-number">02</span><span class="home-title">COEVO</span></div>
+        <div><span class="home-number">03</span><span class="home-title">Tokyo Demons</span></div>
+        <div><span class="home-number">04</span><span class="home-title">Angelica</span></div>
+        <div><span class="home-number">05</span><span class="home-title">A tiny playground</span></div>
+        <div><span class="home-number">06</span><span class="home-title">Kuchidoke</span></div>
+        <div><span class="home-number">07</span><span class="home-title">Kirinoki</span></div>
+        <div><span class="home-number">08</span><span class="home-title">Neptuna</span></div>
+        <div><span class="home-number">09</span><span class="home-title">Vesuvio Spontaneo</span></div>
       </div>
 
       <div class="projects-list">
@@ -1092,6 +1079,14 @@ Packaging, receipts, and informative content reveal the hidden consequences of e
       let chronologicalOrder = false;
       let activeTypeFilter = "ALL";
       let activeYearFilter = "ALL";
+
+      // DETAILS APRIBILI
+document.querySelectorAll(".project-details > div").forEach(function (detail) {
+  detail.addEventListener("click", function (event) {
+    event.stopPropagation();
+    detail.classList.toggle("open");
+  });
+});
     
     
       /* =====================================================
@@ -1112,6 +1107,72 @@ Packaging, receipts, and informative content reveal the hidden consequences of e
         ".project-neptuna",
         ".project-vesuvio-spontaneo"
       ];
+
+      /* =========================================
+   COLONNE INVISIBILI
+========================================= */
+
+const hitAreas = document.createElement("div");
+
+hitAreas.className = "home-hit-areas";
+
+for (let i = 0; i < 9; i++) {
+
+  const area = document.createElement("div");
+
+  area.className = "home-hit-area";
+  area.dataset.index = i;
+
+  hitAreas.appendChild(area);
+
+}
+
+document.body.appendChild(hitAreas);
+
+const hitAreaElements =
+  document.querySelectorAll(".home-hit-area");
+
+/* HOVER SULLE COLONNE */
+
+hitAreaElements.forEach(function (area, index) {
+
+area.addEventListener("mouseenter", function () {
+
+  homeNumbers.forEach(function (number) {
+    number.classList.remove("hover-active");
+  });
+
+  homeNumbers[index].classList.add("hover-active");
+
+});
+
+area.addEventListener("mouseleave", function () {
+
+  homeNumbers[index].classList.remove("hover-active");
+
+});
+
+});
+
+
+/* CLICK SULLE COLONNE */
+
+hitAreaElements.forEach(function (area, index) {
+
+area.addEventListener("click", function (event) {
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  if (!document.body.classList.contains("home-view")) {
+    return;
+  }
+
+  homeNumbers[index].click();
+
+});
+
+});
     
       homeNumbers.forEach(function (number, index) {
     
@@ -1175,20 +1236,26 @@ if (projectLinks.length > 0) {
     newLink.rel =
       "noopener noreferrer";
 
-    const tooltip =
-      document.createElement("span");
+      if (window.innerWidth > 600) {
+
+const tooltip =
+  document.createElement("span");
 
     tooltip.textContent =
-      "Check to see the full project";
+   "Check to see the full project";
 
     newLink.appendChild(tooltip);
+
+  }
 
     linksContainer.appendChild(newLink);
 
   });
 
   document.body.appendChild(linksContainer);
+  linksContainer.classList.add("project-links-visible");
 }
+
 
   /* NUMERO ATTIVO */
   homeNumbers.forEach(function (num) {
@@ -1551,6 +1618,27 @@ if (projectLinks.length > 0) {
     
       const logo =
         document.querySelector(".logo");
+
+        /* =====================================================
+   MOBILE — DETTAGLI PROGETTO APRIBILI
+===================================================== */
+
+document
+  .querySelectorAll(".project-details > div")
+  .forEach(function (detail) {
+
+    detail.addEventListener("click", function (event) {
+
+      if (window.innerWidth > 600) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      detail.classList.toggle("is-open");
+
+    });
+
+  });
     
     
       /* =====================================================
@@ -1700,7 +1788,13 @@ if (projectLinks.length > 0) {
     
     
               document.body.classList.add(
-                "mobile-about-open"
+              "mobile-about-open"
+              );
+
+              history.pushState(
+              { about: true },
+              "",
+              "#about"
               );
     
     
@@ -1788,6 +1882,127 @@ aboutLink.addEventListener(
 );
 
 }
+
+/* =====================================================
+   MOBILE ABOUT — STORIA DELLA NAVIGAZIONE
+===================================================== */
+
+if (window.innerWidth <= 600) {
+
+/* Crea lo stato iniziale della HOME */
+history.replaceState(
+  { home: true },
+  "",
+  window.location.pathname
+);
+
+}
+
+
+/* =====================================================
+   FRECCIA INDIETRO
+===================================================== */
+
+window.addEventListener("popstate", function (event) {
+
+if (window.innerWidth > 600) return;
+
+
+/* =========================================
+   DA PHOTOGRAPHY → ABOUT
+========================================= */
+
+if (event.state && event.state.about) {
+
+  /* Chiude PHOTOGRAPHY */
+  document.body.classList.remove(
+    "photography-open"
+  );
+
+  /* Rimuove active da Photography */
+  const photographyTrigger =
+    document.querySelector(".photography-trigger");
+
+  if (photographyTrigger) {
+    photographyTrigger.classList.remove("active");
+  }
+
+  /* Torna ad ABOUT */
+  document.body.classList.add(
+    "mobile-about-open"
+  );
+
+  document.body.classList.remove(
+    "home-view"
+  );
+
+  return;
+}
+
+
+/* =========================================
+   DA ABOUT → HOME
+========================================= */
+
+if (!event.state || event.state.home) {
+
+  document
+  .querySelectorAll(".project-links-visible")
+  .forEach(function (links) {
+    links.remove();
+  });
+
+  /* Chiude ABOUT */
+  document.body.classList.remove(
+    "mobile-about-open"
+  );
+
+  /* Torna alla HOME */
+  document.body.classList.add(
+    "home-view"
+  );
+
+  /* Chiude completamente tutti i progetti */
+  projects.forEach(function (project) {
+
+    project.classList.remove("open");
+
+    project.style.display = "none";
+
+  });
+
+  /* Rimuove eventuali numeri attivi */
+  homeNumbers.forEach(function (number) {
+
+    number.classList.remove("active");
+
+  });
+
+  /* Chiude il layer progetto */
+  document.body.classList.remove(
+    "project-layer-open"
+  );
+
+  document.body.classList.remove(
+    "home-view-project"
+  );
+
+  /* Torna in cima */
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "instant"
+  });
+
+  if (site) {
+    site.scrollTop = 0;
+  }
+
+}
+
+});
+
+
 
 
 /* =====================================================
@@ -2003,6 +2218,76 @@ if (!event.target.closest(".about-content")) {
     
     
     });
+
+    /* =====================================================
+   MOBILE — SCROLL TRA I PROGETTI
+===================================================== */
+
+if (window.innerWidth <= 600) {
+
+const mobileProjects =
+  document.querySelectorAll(".projects-list .project");
+
+const mobileNumbers =
+  document.querySelectorAll(".home-numbers");
+
+if (mobileProjects.length && mobileNumbers.length) {
+
+  const updateActiveNumber = function () {
+
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    mobileProjects.forEach(function (project, index) {
+
+      const rect = project.getBoundingClientRect();
+
+      const distance =
+        Math.abs(rect.top);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+
+    });
+
+    mobileNumbers.forEach(function (number, index) {
+
+      number.classList.toggle(
+        "active",
+        index === closestIndex
+      );
+
+    });
+
+  };
+
+
+  window.addEventListener(
+    "scroll",
+    updateActiveNumber,
+    { passive: true }
+  );
+
+
+  window.addEventListener(
+    "resize",
+    function () {
+
+      if (window.innerWidth <= 600) {
+        updateActiveNumber();
+      }
+
+    }
+  );
+
+
+  updateActiveNumber();
+
+}
+
+}
     </script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -2025,26 +2310,32 @@ if (!event.target.closest(".about-content")) {
 ========================= */
 
 trigger.addEventListener("click", function (event) {
+  event.preventDefault();
+  event.stopPropagation();
 
-event.preventDefault();
-event.stopPropagation();
+  if (document.body.classList.contains("photography-open")) {
 
-if (document.body.classList.contains("photography-open")) {
+    // CHIUDI PHOTOGRAPHY
+    document.body.classList.remove("photography-open");
+    trigger.classList.remove("active");
 
-  // CHIUDI
-  document.body.classList.remove("photography-open");
-  trigger.classList.remove("active");
+    return;
+  }
 
-} else {
-
-  // APRI
+  // APRI PHOTOGRAPHY
   document.body.classList.add("photography-open");
   trigger.classList.add("active");
 
   setFull();
 
-}
-
+  // MOBILE: crea una nuova pagina nella cronologia
+  if (window.innerWidth <= 600) {
+    history.pushState(
+      { photography: true },
+      "",
+      "#photography"
+    );
+  }
 });
   
   
@@ -2162,6 +2453,7 @@ setActive("full");
     });
   
   });
+  
   </script>
 
 

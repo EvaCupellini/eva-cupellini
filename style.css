@@ -76,7 +76,7 @@ body {
 
 .logo {
   display: inline-block;
-  color: #10aade;
+  color: #acacac;
 
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 
@@ -704,20 +704,51 @@ body {
   will-change: width, height;
 }
 
-.project.open .image-placeholder:hover {
-  flex: 0 0 615px;
-  width: 615px;
+
+/* HOVER IMMAGINI — SOLO DESKTOP */
+
+@media (hover: hover) and (min-width: 601px) {
+
+  .project.open .image-placeholder:hover {
+    flex: 0 0 615px;
+    width: 615px;
+    height: 401px;
+    z-index: 10;
+  }
+
+    /* VESUVIO — ULTIMI 5 VIDEO HOVER */
+
+    .project.open.project-vesuvio-spontaneo
+.image-placeholder:nth-last-child(-n+5):hover {
+  flex: 0 0 200px;
+  width: 200px;
   height: 401px;
   z-index: 10;
 }
 
-.project.open .image-placeholder:hover img,
-.project.open .image-placeholder:hover video {
+.project.open.project-vesuvio-spontaneo
+.image-placeholder:last-child:hover {
+  flex: 0 0 309px;
+  width: 309px;
+  height: 401px;
+  z-index: 10;
+}
+
+.project.open.project-vesuvio-spontaneo
+.image-placeholder:nth-last-child(-n+5):hover video,
+.project.open.project-vesuvio-spontaneo
+.image-placeholder:last-child:hover video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transform: scale(1.03);
+  object-fit: contain;
+  transform: none;
 }
+
+
+}
+
+
+/* NESSUNA TRANSIZIONE SULLE IMMAGINI */
 
 .project.open .image-placeholder img,
 .project.open .image-placeholder video {
@@ -949,16 +980,16 @@ body {
 ================================ */
 
 .project-vesuvio-spontaneo .image-placeholder:nth-last-child(-n+5) {
-  width: 23px;
-  height: 40px;
+  width: 80px;
+  height: 92px;
 
-  flex: 0 0 23px;
+  flex: 0 0 50px;
 }
 
 .project-vesuvio-spontaneo .image-placeholder:last-child {
-  width: 30px;
-  height: 40px;
-  flex: 0 0 30px;
+  width: 60px;
+  height: 92px;
+  flex: 0 0 60px;
 }
 
 
@@ -1013,7 +1044,7 @@ body {
 
   width: 100%;
 
-  color: #10aade;
+  color: #acacac;
 
   font-size: 16px;
   line-height: 1;
@@ -1035,7 +1066,7 @@ body {
 .project-about-link {
   display: none;
 
-  color: #10aade;
+  color: #acacac;
   font-size: 16px;
   line-height: 1;
 
@@ -1297,196 +1328,270 @@ body {
   transform: scale(2.7);
 }
 
-
 /* ================================
+
    HOVER — DIMENSIONE IMMAGINI
+
+   SOLO DESKTOP
+
 ================================ */
 
-.project.open .coevo-01-container:hover img {
-  object-fit: contain;
-  left: 280px;
-  top: 100px;
-  transform: scale(8.2);
-}
+@media (hover: hover) and (min-width: 601px) {
 
-.project.open .coevo-05-container:hover img,
-.project.open .coevo-06-container:hover img,
-.project.open .coevo-07-container:hover img,
-.project.open .coevo-08-container:hover img,
-.project.open .coevo-09-container:hover img,
-.project.open .coevo-10-container:hover img,
-.project.open .coevo-11-container:hover img,
-.project.open .coevo-12-container:hover img,
-.project.open .coevo-13-container:hover img {
-  object-fit: contain;
-  left: 270px;
-  top: 180px;
-  transform: scale(8.2);
-}
+  .project.open .coevo-01-container:hover img {
 
-.project.open .tokyo-demons-02-container:hover img,
-.project.open .tokyo-demons-03-container:hover img,
-.project.open .tokyo-demons-04-container:hover img {
-  object-fit: contain;
-  left: 270px;
-  top: 220px;
-  transform: scale(8.2);
-}
+    object-fit: contain;
 
-.project.open .tokyo-demons-05-container:hover img,
-.project.open .tokyo-demons-06-container:hover img,
-.project.open .tokyo-demons-07-container:hover img,
-.project.open .tokyo-demons-08-container:hover img,
-.project.open .tokyo-demons-09-container:hover img,
-.project.open .tokyo-demons-10-container:hover img,
-.project.open .tokyo-demons-11-container:hover img,
-.project.open .tokyo-demons-12-container:hover img,
-.project.open .tokyo-demons-13-container:hover img {
-  object-fit: contain;
-  left: 290px;
-  top: 180px;
-  transform: scale(8.2);
-}
+    left: 280px;
 
-.project.open .angelica-13-container:hover img {
-  object-fit: contain;
-  left: 270px;
-  top: -20px;
-  transform: scale(9.2);
-}
+    top: 100px;
 
-.project.open .kuchidoke-01-container:hover video {
-  object-fit: contain;
-  left: 270px;
-  top: 58px;
-  transform: scale(9.2);
-}
+    transform: scale(8.2);
 
-.project.open .kuchidoke-12-container:hover img {
-  object-fit: contain;
-  left: 230px;
-  top: 220px;
-  transform: scale(11.2);
-}
+  }
 
-.project.open .a-tiny-playground-09-container:hover img,
-.project.open .a-tiny-playground-10-container:hover img,
-.project.open .a-tiny-playground-11-container:hover img,
-.project.open .a-tiny-playground-12-container:hover img,
-.project.open .a-tiny-playground-13-container:hover img {
-  object-fit: contain;
-  left: 295px;
-  top: 184px;
-  transform: scale(10.3);
-}
+  .project.open .coevo-05-container:hover img,
 
-.project.open .kirinoki-02-container:hover img {
-  object-fit: contain;
-  left: 295px;
-  top: 184px;
-  transform: scale(10.3);
-}
+  .project.open .coevo-06-container:hover img,
 
-.project.open .kirinoki-03-container:hover img {
-  object-fit: contain;
-  left: 273px;
-  top: 180px;
-  transform: scale(8.8);
-}
+  .project.open .coevo-07-container:hover img,
 
-.project.open .kirinoki-10-container:hover video {
-  object-fit: contain;
-  left: 295px;
-  top: 184px;
-  transform: scale(8.8);
-}
+  .project.open .coevo-08-container:hover img,
 
-.project.open .kirinoki-12-container:hover img {
-  object-fit: contain;
-  left: 295px;
-  top: 184px;
-  transform: scale(8.8);
-}
+  .project.open .coevo-09-container:hover img,
 
-.project.open .kirinoki-13-container:hover video {
-  object-fit: contain;
-  left: 295px;
-  top: 184px;
-  transform: scale(8.8);
-}
+  .project.open .coevo-10-container:hover img,
 
-.project.open .neptuna-01-container:hover img,
-.project.open .neptuna-06-container:hover img,
-.project.open .neptuna-07-container:hover img,
-.project.open .neptuna-08-container:hover img {
-  object-fit: contain;
-  left: 270px;
-  top: 184px;
-  transform: scale(9.5);
-}
+  .project.open .coevo-11-container:hover img,
 
-.project.open .neptuna-09-container:hover img {
-  object-fit: contain;
-  left: 270px;
-  top: 230px;
-  transform: scale(9.5);
-}
+  .project.open .coevo-12-container:hover img,
 
-.project.open .neptuna-11-container:hover img {
-  object-fit: contain;
-  left: 270px;
-  top: 130px;
-  transform: scale(9.5);
-}
+  .project.open .coevo-13-container:hover img {
 
-.project.open .neptuna-13-container:hover img {
-  object-fit: contain;
-  left: 270px;
-  top: 180px;
-  transform: scale(10.5);
-}
+    object-fit: contain;
 
+    left: 270px;
 
-/* ================================
-   VESUVIO — ULTIMI 5 VIDEO APERTI
-================================ */
+    top: 180px;
 
-.project-vesuvio-spontaneo.open
-.image-placeholder:nth-last-child(-n+5) {
-  flex: 0 0 50px;
-  width: 50px;
-  height: 91px;
-}
+    transform: scale(8.2);
 
-.project-vesuvio-spontaneo.open
-.image-placeholder:last-child {
-  flex: 0 0 62px;
-  width: 62px;
-  height: 90px;
-}
+  }
 
-.project-vesuvio-spontaneo.open
-.image-placeholder:nth-last-child(-n+5):hover {
-  flex: 0 0 225px;
-  width: 225px;
-  height: 400px;
-}
+  .project.open .tokyo-demons-02-container:hover img,
 
-.project-vesuvio-spontaneo.open
-.image-placeholder:nth-last-child(-n+5):hover video {
-  width: auto;
-  height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  object-position: center;
-  transform: none;
-}
+  .project.open .tokyo-demons-03-container:hover img,
 
-.project-vesuvio-spontaneo.open
-.image-placeholder:last-child:hover {
-  flex: 0 0 300px;
-  width: 300px;
-  height: 400px;
+  .project.open .tokyo-demons-04-container:hover img {
+
+    object-fit: contain;
+
+    left: 270px;
+
+    top: 220px;
+
+    transform: scale(8.2);
+
+  }
+
+  .project.open .tokyo-demons-05-container:hover img,
+
+  .project.open .tokyo-demons-06-container:hover img,
+
+  .project.open .tokyo-demons-07-container:hover img,
+
+  .project.open .tokyo-demons-08-container:hover img,
+
+  .project.open .tokyo-demons-09-container:hover img,
+
+  .project.open .tokyo-demons-10-container:hover img,
+
+  .project.open .tokyo-demons-11-container:hover img,
+
+  .project.open .tokyo-demons-12-container:hover img,
+
+  .project.open .tokyo-demons-13-container:hover img {
+
+    object-fit: contain;
+
+    left: 290px;
+
+    top: 180px;
+
+    transform: scale(8.2);
+
+  }
+
+  .project.open .angelica-13-container:hover img {
+
+    object-fit: contain;
+
+    left: 270px;
+
+    top: -20px;
+
+    transform: scale(9.2);
+
+  }
+
+  .project.open .kuchidoke-01-container:hover video {
+
+    object-fit: contain;
+
+    left: 270px;
+
+    top: 58px;
+
+    transform: scale(9.2);
+
+  }
+
+  .project.open .kuchidoke-12-container:hover img {
+
+    object-fit: contain;
+
+    left: 230px;
+
+    top: 220px;
+
+    transform: scale(11.2);
+
+  }
+
+  .project.open .a-tiny-playground-09-container:hover img,
+
+  .project.open .a-tiny-playground-10-container:hover img,
+
+  .project.open .a-tiny-playground-11-container:hover img,
+
+  .project.open .a-tiny-playground-12-container:hover img,
+
+  .project.open .a-tiny-playground-13-container:hover img {
+
+    object-fit: contain;
+
+    left: 295px;
+
+    top: 184px;
+
+    transform: scale(10.3);
+
+  }
+
+  .project.open .kirinoki-02-container:hover img {
+
+    object-fit: contain;
+
+    left: 295px;
+
+    top: 184px;
+
+    transform: scale(10.3);
+
+  }
+
+  .project.open .kirinoki-03-container:hover img {
+
+    object-fit: contain;
+
+    left: 273px;
+
+    top: 180px;
+
+    transform: scale(8.8);
+
+  }
+
+  .project.open .kirinoki-10-container:hover video {
+
+    object-fit: contain;
+
+    left: 295px;
+
+    top: 184px;
+
+    transform: scale(8.8);
+
+  }
+
+  .project.open .kirinoki-12-container:hover img {
+
+    object-fit: contain;
+
+    left: 295px;
+
+    top: 184px;
+
+    transform: scale(8.8);
+
+  }
+
+  .project.open .kirinoki-13-container:hover video {
+
+    object-fit: contain;
+
+    left: 295px;
+
+    top: 184px;
+
+    transform: scale(8.8);
+
+  }
+
+  .project.open .neptuna-01-container:hover img,
+
+  .project.open .neptuna-06-container:hover img,
+
+  .project.open .neptuna-07-container:hover img,
+
+  .project.open .neptuna-08-container:hover img {
+
+    object-fit: contain;
+
+    left: 270px;
+
+    top: 184px;
+
+    transform: scale(9.5);
+
+  }
+
+  .project.open .neptuna-09-container:hover img {
+
+    object-fit: contain;
+
+    left: 270px;
+
+    top: 230px;
+
+    transform: scale(9.5);
+
+  }
+
+  .project.open .neptuna-11-container:hover img {
+
+    object-fit: contain;
+
+    left: 270px;
+
+    top: 130px;
+
+    transform: scale(9.5);
+
+  }
+
+  .project.open .neptuna-13-container:hover img {
+
+    object-fit: contain;
+
+    left: 270px;
+
+    top: 180px;
+
+    transform: scale(10.5);
+
+  }
+
 }
 
 
@@ -1796,7 +1901,8 @@ body.home-view .home-numbers > div::after {
   transition: transform 0.2s ease;
 }
 
-body.home-view .home-numbers > div:hover::after {
+body.home-view .home-numbers > div:hover::after,
+body.home-view .home-numbers > div.hover-active::after {
   transform: scaleX(1);
 }
 
@@ -1891,13 +1997,13 @@ body.home-view.project-layer-open
   }
 
 
-  /* ---------------------------------
-     NUMERI SOTTO AL PROJECT LAYER
-  --------------------------------- */
+ /* ---------------------------------
+   NUMERI SOPRA AL PROJECT LAYER
+--------------------------------- */
 
-  body.home-view.project-layer-open .home-numbers {
-    z-index: 10 !important;
-  }
+body.home-view.project-layer-open .home-numbers {
+  z-index: 10001 !important;
+}
 
 
   /* ---------------------------------
@@ -2023,6 +2129,9 @@ body.about-open {
   overflow: hidden !important;
 }
 
+.home-numbers .home-title {
+  display: none !important;
+}
 
 /* =====================================================
    MOBILE
@@ -2047,7 +2156,18 @@ body.about-open {
     scroll-snap-type: y mandatory;
     -webkit-overflow-scrolling: touch;
   }
+  body.home-view {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    height: auto !important;
+    min-height: 100%;
+  }
 
+  body.home-view.project-layer-open {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    height: auto !important;
+  }
 
   /* =========================================
      SITE
@@ -2121,7 +2241,7 @@ body.about-open {
   }
 
   .site-header .logo {
-    font-size: 8px !important;
+    font-size: 2px !important;
     line-height: 1 !important;
     margin-top: 2px !important;
   }
@@ -2135,12 +2255,19 @@ body.about-open {
     margin-top: 5px;
     margin-right: 10px;
 
-    color: #10aade;
+    color: #acacac;
     text-decoration: none;
     cursor: pointer;
   }
 
-    /* =========================================
+  /* =========================================
+   LOGO PICCOLO SOPRA LA GALLERIA — MOBILE
+========================================= */
+
+body.home-view.project-layer-open .site-header .project-about-link {
+  transform: translateY(-24px) !important;
+}
+/* =========================================
      HOME NUMBERS — MOBILE VERTICAL
   ========================================= */
 
@@ -2168,16 +2295,28 @@ body.about-open {
   }
 
   body.home-view .home-numbers > div {
-    display: block !important;
-
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: baseline !important;
     width: max-content !important;
-    height: auto !important;
-
-    font-size: 12px !important;
-    line-height: 1.2 !important;
-
     white-space: nowrap !important;
   }
+  
+  body.home-view .home-numbers .home-number {
+    display: inline-block !important;
+    width: 22px !important;
+    flex-shrink: 0 !important;
+  }
+  
+  body.home-view .home-numbers .home-title {
+    display: inline-block !important;
+    margin-left: 8px !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+
+
 
   /* =========================================
      PROJECT LIST
@@ -2277,6 +2416,7 @@ body.about-open {
     height: calc((100vw - 30px) * 0.58) !important;
 
     position: relative;
+    transition: none !important;
   }
 
 
@@ -2284,10 +2424,22 @@ body.about-open {
      MOBILE — IMMAGINI PERSONALIZZATE
   ========================================= */
 
+  .coevo-01-container {
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  
   .coevo-01-container img {
-    transform: scale(5);
-    left: 160px;
-    top: 50px;
+    position: absolute !important;
+  
+    width: 45px !important;
+    height: auto !important;
+  
+    left: 160px !important;
+    top: -30px !important;
+  
+    transform: scale(5) !important;
+    transform-origin: top left !important;
   }
 
   .coevo-05-container img,
@@ -2299,9 +2451,9 @@ body.about-open {
   .coevo-11-container img,
   .coevo-12-container img,
   .coevo-13-container img {
-    transform: scale(5);
-    left: 155px;
-    top: 88px;
+    transform: scale(1);
+    left: 15px;
+    top: -38px;
   }
 
   .tokyo-demons-02-container img {
@@ -2438,7 +2590,7 @@ body.about-open {
 
     width: 100%;
 
-    margin-top: 14px;
+    margin-top: 20px;
     margin-bottom: 20px;
 
     padding: 0;
@@ -2479,26 +2631,50 @@ body.about-open {
   }
 
   body.mobile-about-open .projects-column {
-    display: none;
+    display: none !important;
+  }
+
+  body.mobile-about-open .site {
+    display: block !important;
+    width: 100% !important;
+    height: 100svh !important;
+  }
+  
+  body.mobile-about-open .about-inner {
+    display: block !important;
+    width: 100% !important;
+    min-height: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  body.mobile-about-open .about-content {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   body.mobile-about-open .about-column {
-    display: block;
-
-    position: fixed;
-    inset: 0;
-
-    width: 100%;
-    height: 100svh;
-
-    padding: 8px 15px 30px;
-
-    background: #d1cdcd;
-
-    z-index: 2000;
-
-    overflow-y: auto;
-    overflow-x: hidden;
+    display: block !important;
+  
+    position: fixed !important;
+    inset: 0 !important;
+  
+    width: 100% !important;
+    height: 100svh !important;
+  
+    padding: 8px 15px 30px !important;
+    margin: 0 !important;
+  
+    background: #ffffff !important;
+  
+    z-index: 2000 !important;
+  
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   body.mobile-about-open .about-inner {
@@ -2640,7 +2816,6 @@ body.about-open {
     cursor: pointer;
   }
 
-}
 
 body.home-view.project-layer-open
   .projects-list .project.open {
@@ -2661,7 +2836,7 @@ body.home-view.project-layer-open
     padding-left: 0 !important;
     padding-right: 0 !important;
 
-    top: -45px !important;
+    top: 15px !important;
 
     flex-shrink: 0 !important;
   }
@@ -2680,6 +2855,7 @@ body.home-view.project-layer-open
     flex-shrink: 0 !important;
 
     pointer-events: auto !important;
+    margin-top: 15px !important;
   }
 
   body.home-view.project-layer-open
@@ -2692,6 +2868,8 @@ body.home-view.project-layer-open
     position: fixed !important;
     z-index: 10001 !important;
   }
+}
+
   
 
 
@@ -2718,7 +2896,7 @@ body.home-view.project-layer-open
     margin-left: 3.2vw !important;
     margin-right: 3.2vw !important;
 
-    margin-top: 30px !important;
+    margin-top: 40px !important;
     margin-bottom: 80px !important;
 
     padding: 0 !important;
@@ -2848,7 +3026,7 @@ body.home-view.project-layer-open
   }
 
   body.home-view.project-layer-open .site-header .logo {
-    font-size: 15px !important;
+    font-size: 18px !important;
     line-height: 1 !important;
 
     margin-top: 0 !important;
@@ -2866,7 +3044,7 @@ body.home-view.project-layer-open
   
     margin-top: 0 !important;
   
-    color: #10aade !important;
+    color: #acacac !important;
     visibility: visible !important;
     opacity: 1 !important;
   }
@@ -2879,7 +3057,9 @@ body.home-view.project-layer-open
     margin-top: 23px !important;
   }
 
+
 }
+
 
 .project-links {
   position: static !important;
@@ -2896,47 +3076,65 @@ body.home-view.project-layer-open
 .project-links a {
   position: relative;
 
-  color: #8fc9e8;
+  color: #acacac;
   text-decoration: none;
 
   font-family: "Times New Roman", serif;
   font-size: 13px;
 }
 
-.project-links a:hover {
-  animation: link-vibrate 0.18s linear infinite;
-}
-
-@keyframes link-vibrate {
-  0%   { transform: translate(0, 0); }
-  25%  { transform: translate(-1px, 1px); }
-  50%  { transform: translate(1px, -1px); }
-  75%  { transform: translate(-1px, -1px); }
-  100% { transform: translate(0, 0); }
-}
-
-.project-links a::after {
-  content: "Check to see the full project";
+.project-links a::before {
+  content: "";
 
   position: absolute;
+
   left: 0;
-  bottom: 100%;
-  margin-bottom: 7px;
+  right: 0;
+  top: 50%;
 
-  white-space: nowrap;
+  height: 1px;
+  background: #000;
 
-  font-family: Arial, sans-serif;
-  font-size: 11px;
-  color: #111;
+  transform: scaleX(0);
+  transform-origin: left;
 
-  opacity: 0;
-  pointer-events: none;
-
-  transition: opacity 0.15s ease;
+  transition: transform 0.2s ease;
 }
 
-.project-links a:hover::after {
-  opacity: 1;
+.project-links a:hover::before {
+  transform: scaleX(1);
+}
+
+@media screen and (min-width: 601px) {
+
+  .project-links a::after {
+    content: "Check to see the full project";
+
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    margin-bottom: 7px;
+
+    white-space: nowrap;
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: #111;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.15s ease;
+  }
+
+  .project-links a:hover::after {
+    opacity: 1;
+  }
+
+  .project-links a:hover {
+    color: #000000 !important;
+  }
+
 }
 
 @media screen and (min-width: 601px) {
@@ -3029,7 +3227,10 @@ body.home-view:not(.project-layer-open)
 /* MOSTRA IL TITOLO SOLO IN HOVER */
 
 body.home-view:not(.project-layer-open)
-.home-numbers > div:hover::before {
+.home-numbers > div:hover::before,
+
+body.home-view:not(.project-layer-open)
+.home-numbers > div.hover-active::before {
   opacity: 1;
 }
 
@@ -3049,6 +3250,16 @@ body.home-view:not(.project-layer-open)
   position: relative;
   cursor: pointer;
   text-decoration: none !important;
+
+  color: #acacac !important;
+  transition: color 0.2s ease;
+}
+
+
+/* HOVER */
+
+.photography-trigger:hover {
+  color: #000000 !important;
 }
 
 
@@ -3072,7 +3283,7 @@ body.home-view:not(.project-layer-open)
 }
 
 
-/* HOVER */
+/* HOVER — LINEA */
 
 .photography-trigger:hover::after {
   transform: scaleX(1);
@@ -3080,6 +3291,10 @@ body.home-view:not(.project-layer-open)
 
 
 /* LINEA FISSA QUANDO LA GALLERIA È APERTA */
+
+.photography-trigger.active {
+  color: #000000 !important;
+}
 
 .photography-trigger.active::after {
   transform: scaleX(1);
@@ -3185,18 +3400,12 @@ body.photography-open .photography-gallery {
    GRID
 ========================= */
 
-.photography-images.grid-view {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 0 !important;
-  align-content: start;
-  width: 100%;
-}
-
 .photography-images.grid-view img {
   display: block !important;
   width: 100% !important;
-  height: auto !important;
+  height: 100% !important;
+  aspect-ratio: 3 / 4 !important;
+  object-fit: cover !important;
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -3217,7 +3426,7 @@ body.photography-open .photography-gallery {
 
     padding: 15px;
 
-    background: #d1cdcd;
+    background: #ffffff;
   }
 
   .photography-images {
@@ -3233,3 +3442,727 @@ body.photography-open .photography-gallery {
   }
 
 }
+
+/* =====================================================
+   COLONNE INVISIBILI HOME
+===================================================== */
+
+.home-hit-areas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+
+  z-index: 999;
+  pointer-events: auto;
+}
+
+.home-hit-area {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* ATTIVE SOLO IN HOME */
+
+body:not(.home-view) .home-hit-areas {
+  pointer-events: none;
+}
+
+/* DISATTIVA QUANDO SI APRE UN PROGETTO */
+
+body.project-layer-open .home-hit-areas {
+  pointer-events: none;
+}
+
+/* DISATTIVA QUANDO SI APRE ABOUT */
+
+body.about-open .home-hit-areas {
+  pointer-events: none;
+}
+
+body.mobile-about-open .home-hit-areas {
+  pointer-events: none;
+}
+
+/* =========================================
+   MOBILE — PROJECT INFORMATION
+========================================= */
+
+@media screen and (max-width: 600px) {
+
+  .project.open .project-information {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: -100px 0 30px 0 !important;
+    padding: 0 !important;
+
+    position: relative !important;
+
+    overflow: visible !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    font-size: 13px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* CATEGORIA + ANNO */
+
+  .project.open .project-meta-secondary {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+
+    margin: 0 0 22px 0 !important;
+    padding: 0 !important;
+
+    position: static !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .project.open .project-meta-secondary .project-type,
+  .project.open .project-meta-secondary .project-year {
+    display: block !important;
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    position: static !important;
+
+    text-align: left !important;
+  }
+
+  /* DESCRIZIONE */
+
+  .project.open .project-description {
+    display: block !important;
+    width: 100% !important;
+
+    margin: 0 0 24px 0 !important;
+    padding: 0 !important;
+
+    position: static !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .project.open .project-description p {
+    display: block !important;
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* DETTAGLI */
+
+  .project.open .project-details {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+
+    gap: 14px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    position: static !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .project.open .project-details > div {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .project.open .detail-label {
+    display: inline-block !important;
+    width: fit-content !important;
+    margin: 0 0 2px 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+  }
+
+  /* NUMERI ORIZZONTALI QUANDO SI APRE UN PROGETTO */
+
+body.home-view.project-layer-open .home-numbers {
+  display: flex !important;
+  flex-direction: row !important;
+
+  position: fixed !important;
+
+  top: 36% !important;
+  left: 15px !important;
+  right: 15px !important;
+
+  width: auto !important;
+  height: auto !important;
+
+  transform: translateY(-50%) !important;
+
+  justify-content: space-between !important;
+  align-items: center !important;
+
+  gap: 0 !important;
+
+  z-index: 10001 !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  pointer-events: auto !important;
+}
+
+body.home-view.project-layer-open .home-numbers > div {
+  display: block !important;
+
+  width: max-content !important;
+  height: auto !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+
+  color: #bfbfbf !important;
+
+  white-space: nowrap !important;
+
+  position: relative !important;
+}
+
+body.home-view.project-layer-open .home-numbers .home-title {
+  display: none !important;
+}
+
+body.home-view.project-layer-open .home-numbers .home-number {
+  display: inline-block !important;
+  width: auto !important;
+}
+
+body.home-view.project-layer-open .home-numbers > div.active {
+  color: #000000 !important;
+}
+
+
+
+  /* TITOLO DEL PROGETTO APERTO — MOBILE */
+/* NASCONDE SOLO IL TITOLO GRANDE DOPO IL CLICK */
+
+body.home-view.project-layer-open .home-numbers::after {
+  display: none !important;
+}
+
+}
+
+/* =========================================
+   MOBILE — TITOLO PROGETTO APERTO
+========================================= */
+
+@media screen and (max-width: 600px) {
+
+  body.home-view.project-layer-open
+  .projects-list .project.open .project-meta {
+    display: grid !important;
+
+    position: absolute !important;
+
+    top: 250px !important;
+    left: 120px !important;
+
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    z-index: 10 !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  body.home-view.project-layer-open
+  .projects-list .project.open .project-title {
+    display: block !important;
+
+    font-size: 40px !important;
+    line-height: 1 !important;
+
+    color: #111111 !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+  body.home-view.project-layer-open .site-header .logo {
+    font-size: 16px !important;
+    line-height: 1 !important;
+    margin-top: -19px !important;
+  }
+
+/* DETAILS APRIBILI */
+.project-details > div {
+  cursor: pointer;
+}
+
+
+
+.project-details > div > span:not(.detail-label) {
+  display: none;
+}
+
+.project-details > div.open > span:not(.detail-label) {
+  display: inline;
+}
+
+/* TYPE + YEAR A SINISTRA, LINK A DESTRA */
+
+.project.open .project-meta-secondary {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+
+.project.open .project-links {
+  position: absolute !important;
+  top: -8px !important;
+  right: 10px !important;
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 12px !important;
+}
+
+.project.open .project-links a {
+  text-decoration: none !important;
+  color: inherit !important;
+  white-space: nowrap !important;
+}
+
+
+.project-links a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: #000000;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.project.open .project-links a {
+  color: #acacac !important;
+  text-decoration: none !important;
+}
+
+.project.open .project-links a.active,
+.project.open .project-links a.active span {
+  color: #000000 !important;
+}
+
+.project.open .project-links a.active::before {
+  transform: scaleX(1);
+}
+
+}
+
+@media screen and (max-width: 600px) {
+
+  @media screen and (max-width: 600px) {
+
+    .project.open .project-details .detail-label {
+      position: relative !important;
+      display: inline-block !important;
+      color: #acacac !important;
+      cursor: pointer;
+    }
+  
+    /* nessuna linea all'inizio */
+    .project.open .project-details .detail-label::after {
+      content: "" !important;
+      position: absolute !important;
+      left: 0 !important;
+      width: 100% !important;
+      top: 50% !important;
+      height: 1px !important;
+      background: #000000 !important;
+      transform: scaleX(0) !important;
+      transform-origin: left !important;
+      transition: transform 0.2s ease;
+    }
+  
+    /* quando è aperto */
+    .project.open .project-details > div.open .detail-label {
+      color: #000000 !important;
+    }
+  
+    .project.open .project-details > div.open .detail-label::after {
+      transform: scaleX(1) !important;
+    }
+  
+  }
+
+}
+
+
+@media screen and (max-width: 600px) {
+
+  /* VESUVIO — DIMENSIONI SPECIALI */
+
+  body.home-view.project-layer-open
+  .projects-list .project.open.project-vesuvio-spontaneo
+  .project-images .image-placeholder:nth-last-child(-n+5) {
+    flex: 0 0 113px !important;
+    width: 113px !important;
+    min-width: 113px !important;
+    max-width: 113px !important;
+
+    height: calc((100vw - 30px) * 0.58) !important;
+    min-height: calc((100vw - 30px) * 0.58) !important;
+    max-height: calc((100vw - 30px) * 0.58) !important;
+  }
+
+  body.home-view.project-layer-open
+  .projects-list .project.open.project-vesuvio-spontaneo
+  .project-images .image-placeholder:last-child {
+    flex: 0 0 120px !important;
+    width: 120px !important;
+    min-width: 120px !important;
+    max-width: 120px !important;
+
+    height: calc((100vw - 30px) * 0.58) !important;
+    min-height: calc((100vw - 30px) * 0.58) !important;
+    max-height: calc((100vw - 30px) * 0.58) !important;
+  }
+
+}
+@media (hover: hover) and (min-width: 601px) {
+
+  .project.open .coevo-01-container:hover img {
+    object-fit: contain;
+    left: 280px;
+    top: 100px;
+    transform: scale(8.2);
+  }
+
+  .project.open .coevo-05-container:hover img,
+  .project.open .coevo-06-container:hover img,
+  .project.open .coevo-07-container:hover img,
+  .project.open .coevo-08-container:hover img,
+  .project.open .coevo-09-container:hover img,
+  .project.open .coevo-10-container:hover img,
+  .project.open .coevo-11-container:hover img,
+  .project.open .coevo-12-container:hover img,
+  .project.open .coevo-13-container:hover img {
+    object-fit: contain;
+    left: 270px;
+    top: 180px;
+    transform: scale(8.2);
+  }
+
+}
+
+
+
+/* =====================================================
+   MOBILE — POSIZIONE IMMAGINI DENTRO IL CONTENITORE
+   OVERRIDE FINALE
+===================================================== */
+
+@media screen and (max-width: 600px) {
+
+  /* COEVO */
+
+  .project.open .project-images .coevo-01-container img {
+    position: absolute !important;
+    width: 45px !important;
+    height: auto !important;
+    left: 60px !important;
+    top: -120px !important;
+    transform: scale(5.5) !important;
+    transform-origin: top left !important;
+    object-fit: contain !important;
+  }
+
+  .project.open .project-images .coevo-05-container img,
+  .project.open .project-images .coevo-06-container img,
+  .project.open .project-images .coevo-07-container img,
+  .project.open .project-images .coevo-08-container img,
+  .project.open .project-images .coevo-09-container img,
+  .project.open .project-images .coevo-10-container img,
+  .project.open .project-images .coevo-11-container img,
+  .project.open .project-images .coevo-12-container img,
+  .project.open .project-images .coevo-13-container img {
+    position: absolute !important;
+    width: 55px !important;
+    height: auto !important;
+    left: 47px !important;
+    top: 9px !important;
+    transform: scale(5) !important;
+    transform-origin: top left !important;
+    object-fit: contain !important;
+  }
+
+
+  /* TOKYO DEMONS */
+
+  .project.open .project-images .tokyo-demons-02-container img {
+    position: absolute !important;
+    left: 150px !important;
+    top: 120px !important;
+    transform: scale(6) !important;
+    width: 58px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .project.open .project-images .tokyo-demons-03-container img,
+  .project.open .project-images .tokyo-demons-04-container img {
+    position: absolute !important;
+    left: 153px !important;
+    top: 120px !important;
+    transform: scale(6) !important;
+    width: 58px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .project.open .project-images .tokyo-demons-05-container img,
+  .project.open .project-images .tokyo-demons-06-container img,
+  .project.open .project-images .tokyo-demons-07-container img,
+  .project.open .project-images .tokyo-demons-08-container img,
+  .project.open .project-images .tokyo-demons-09-container img,
+  .project.open .project-images .tokyo-demons-10-container img,
+  .project.open .project-images .tokyo-demons-11-container img,
+  .project.open .project-images .tokyo-demons-12-container img,
+  .project.open .project-images .tokyo-demons-13-container img {
+    position: absolute !important;
+    left: 153px !important;
+    top: 95px !important;
+    transform: scale(6) !important;
+    width: 58px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+
+  /* ANGELICA */
+
+  .project.open .project-images .angelica-13-container img {
+    position: absolute !important;
+    left: 133px !important;
+    top: -88px !important;
+    transform: scale(6.2) !important;
+    width: 68px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+
+  /* A TINY PLAYGROUND */
+
+  .project.open .project-images .a-tiny-playground-07-container video {
+    position: absolute !important;
+    left: 165px !important;
+    top: 96px !important;
+    transform: scale(8.5) !important;
+    width: 25px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .project.open .project-images .a-tiny-playground-09-container img,
+  .project.open .project-images .a-tiny-playground-10-container img,
+  .project.open .project-images .a-tiny-playground-11-container img,
+  .project.open .project-images .a-tiny-playground-12-container img,
+  .project.open .project-images .a-tiny-playground-13-container img {
+    position: absolute !important;
+    left: 165px !important;
+    top: 86px !important;
+    transform: scale(5.5) !important;
+    width: 25px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+
+  /* KUCHIDOKE */
+
+  .project.open .project-images .kuchidoke-01-container video {
+    position: absolute !important;
+    left: 150px !important;
+    top: 86px !important;
+    transform: scale(5.5) !important;
+    width: 68px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .project.open .project-images .kuchidoke-12-container img {
+    position: absolute !important;
+    left: 110px !important;
+    top: 86px !important;
+    transform: scale(5.5) !important;
+    width: 150px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+
+  /* KIRINOKI */
+
+  .project.open .project-images .kirinoki-02-container img {
+    position: absolute !important;
+    left: 160px !important;
+    top: 86px !important;
+    transform: scale(5.5) !important;
+    width: 38px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .project.open .project-images .kirinoki-03-container img {
+    position: absolute !important;
+    left: 150px !important;
+    top: 70px !important;
+    transform: scale(5.3) !important;
+    width: 70px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .project.open .project-images .kirinoki-10-container video {
+    position: absolute !important;
+    left: 150px !important;
+    top: 87px !important;
+    transform: scale(5.3) !important;
+    width: 38px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .project.open .project-images .kirinoki-12-container img {
+    position: absolute !important;
+    left: 138px !important;
+    top: 60px !important;
+    transform: scale(4.3) !important;
+    width: 80px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .project.open .project-images .kirinoki-13-container video {
+    position: absolute !important;
+    left: 150px !important;
+    top: 87px !important;
+    transform: scale(5.3) !important;
+    width: 38px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+
+  /* NEPTUNA */
+
+  .project.open .project-images .neptuna-01-container img,
+  .project.open .project-images .neptuna-06-container img,
+  .project.open .project-images .neptuna-07-container img,
+  .project.open .project-images .neptuna-08-container img,
+  .project.open .project-images .neptuna-09-container img {
+    position: absolute !important;
+    left: 140px !important;
+    top: 87px !important;
+    transform: scale(5.6) !important;
+    width: 68px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .project.open .project-images .neptuna-11-container img {
+    position: absolute !important;
+    left: 140px !important;
+    top: 5px !important;
+    transform: scale(5.6) !important;
+    width: 68px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .project.open .project-images .neptuna-13-container img {
+    position: absolute !important;
+    left: 140px !important;
+    top: 65px !important;
+    transform: scale(5.6) !important;
+    width: 68px !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+  body.home-view.project-layer-open {
+    overflow: hidden !important;
+    height: 100svh !important;
+  }
+  
+  body.home-view.project-layer-open .projects-list {
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+  
+  body.home-view.project-layer-open .projects-list .project.open {
+    position: fixed !important;
+  
+    top: 0 !important;
+    left: 0 !important;
+  
+    width: 100vw !important;
+    height: 100svh !important;
+  
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  
+    -webkit-overflow-scrolling: touch;
+  
+    padding-bottom: 80px !important;
+  }
+}
+
+.project-links-visible {
+  display: none;
+}
+
+body.project-layer-open .project-links-visible {
+  display: flex;
+}
+
+
+
+
+
+
+
