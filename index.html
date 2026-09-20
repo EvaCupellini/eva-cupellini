@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eva Cupellini</title>
+  <title>EVA CUPELLINI</title>
   <link rel="icon" href="media/eva-favicon.png">
   <link rel="stylesheet" href="style.css"> 
 </head>
@@ -1149,7 +1149,83 @@ document.querySelectorAll(".project-details > div").forEach(function (detail) {
       ===================================================== */
     
       const homeNumbers =
-        document.querySelectorAll(".home-numbers > div");
+  document.querySelectorAll(".home-numbers > div");
+  const homePreviews =
+  document.querySelectorAll(".home-numbers .home-preview");
+
+  function resetHomePreviews() {
+
+homePreviews.forEach(function (preview) {
+
+  preview.style.removeProperty("position");
+  preview.style.removeProperty("top");
+  preview.style.removeProperty("left");
+  preview.style.removeProperty("width");
+  preview.style.removeProperty("height");
+  preview.style.removeProperty("transform");
+  preview.style.removeProperty("opacity");
+  preview.style.removeProperty("visibility");
+  preview.style.removeProperty("display");
+
+});
+
+const numbers = document.querySelector(".home-numbers");
+
+if (numbers) {
+  numbers.style.removeProperty("position");
+  numbers.style.removeProperty("top");
+  numbers.style.removeProperty("bottom");
+  numbers.style.removeProperty("transform");
+}
+
+}
+
+
+/* =====================================================
+   POSIZIONE NUMERI — SOPRA PROJECT INFORMATION
+===================================================== */
+
+function updateHomeNumbersPosition() {
+  if (window.innerWidth <= 600) return;
+
+  const openProject = document.querySelector(".project.open");
+  const numbers = document.querySelector(".home-numbers");
+
+  if (!openProject || !numbers) return;
+
+  const information = openProject.querySelector(".project-information");
+  if (!information) return;
+
+  const infoRect = information.getBoundingClientRect();
+  const numbersHeight = numbers.offsetHeight;
+  const gap = 10;
+
+  numbers.style.setProperty(
+    "position",
+    "fixed",
+    "important"
+  );
+
+  numbers.style.setProperty(
+    "top",
+    (infoRect.top - numbersHeight - gap) + "px",
+    "important"
+  );
+
+  numbers.style.setProperty(
+    "bottom",
+    "auto",
+    "important"
+  );
+
+  numbers.style.setProperty(
+    "transform",
+    "none",
+    "important"
+  );
+}
+
+
     
       const projectMap = [
         ".project-decay",
@@ -1349,6 +1425,27 @@ if (window.innerWidth > 600) {
 } else {
   selectedProject.style.display = "";
 }
+
+document.querySelectorAll(".home-numbers > div").forEach(function (item) {
+  item.classList.remove("open-project-number");
+});
+
+number.classList.add("open-project-number");
+
+requestAnimationFrame(function () {
+  updateHomeNumbersPosition();
+});
+
+
+/* =========================================
+   CREA STATO NELLA CRONOLOGIA DEL BROWSER
+========================================= */
+
+history.pushState(
+  { project: index },
+  "",
+  "#project-" + (index + 1)
+);
 
 /* ===============================
    PROJECT LINKS
@@ -1859,6 +1956,8 @@ document
             document.body.classList.add(
               "home-view"
             );
+
+            resetHomePreviews();
     
     
             /* CHIUDE TUTTI I PROGETTI */
@@ -1905,78 +2004,117 @@ document
     
     
       /* =====================================================
-         ABOUT — APRE LA SEZIONE BLUR
-      ===================================================== */
-    
-      if (projectAboutLink) {
-    
-        projectAboutLink.addEventListener(
-          "click",
-          function (event) {
-    
-            event.preventDefault();
-            event.stopPropagation();
-    
-    
-            /* =========================
-               MOBILE
-            ========================= */
-    
-            if (window.innerWidth <= 600) {
-    
-              projects.forEach(function (project) {
-    
-                project.classList.remove("open");
-    
-              });
-    
-    
-              document.body.classList.add(
-              "mobile-about-open"
-              );
+   ABOUT — APRE LA SEZIONE BLUR
+===================================================== */
 
-              history.pushState(
-              { about: true },
-              "",
-              "#about"
-              );
-    
-    
-              window.scrollTo({
-                top: 0,
-                left: 0,
-                behavior: "instant"
-              });
-    
-    
-              if (aboutColumn) {
-                aboutColumn.scrollTop = 0;
-              }
-    
-    
-              return;
-    
-            }
-    
-    
-            /* =========================
-   DESKTOP
-========================= */
+if (projectAboutLink) {
 
-document.body.classList.toggle("about-open");
+projectAboutLink.addEventListener(
+  "click",
+  function (event) {
 
-if (aboutColumn) {
-  aboutColumn.scrollTop = 0;
-}
+    event.preventDefault();
+    event.stopPropagation();
 
-if (aboutContent) {
-  aboutContent.scrollTop = 0;
-}
-    
-          }
-        );
-    
+
+    /* =========================
+       SALVA IL PROGETTO CORRENTE
+    ========================= */
+
+    const currentProject =
+      document.querySelector(".project.open");
+
+    const currentProjectIndex =
+      currentProject
+        ? Array.from(projects).indexOf(currentProject)
+        : null;
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    if (window.innerWidth <= 600) {
+
+      /* prima salvo il progetto,
+         POI lo chiudo */
+
+      projects.forEach(function (project) {
+        project.classList.remove("open");
+      });
+
+      document.body.classList.add(
+        "mobile-about-open"
+      );
+
+      document.body.classList.remove(
+        "project-layer-open"
+      );
+
+      document.body.classList.remove(
+        "home-view-project"
+      );
+
+
+      history.pushState(
+        {
+          about: true,
+          fromProject: currentProjectIndex
+        },
+        "",
+        "#about"
+      );
+
+
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "auto"
+      });
+
+      if (aboutColumn) {
+        aboutColumn.scrollTop = 0;
       }
+
+      if (aboutContent) {
+        aboutContent.scrollTop = 0;
+      }
+
+      return;
+    }
+
+
+    /* =========================
+       DESKTOP
+    ========================= */
+
+    document.body.classList.add(
+      "about-open"
+    );
+
+
+    history.pushState(
+      {
+        about: true,
+        fromProject: currentProjectIndex
+      },
+      "",
+      "#about"
+    );
+
+
+    if (aboutColumn) {
+      aboutColumn.scrollTop = 0;
+    }
+
+    if (aboutContent) {
+      aboutContent.scrollTop = 0;
+    }
+
+  }
+);
+
+}
     
     
      /* =====================================================
@@ -2031,16 +2169,15 @@ aboutLink.addEventListener(
    MOBILE ABOUT — STORIA DELLA NAVIGAZIONE
 ===================================================== */
 
-if (window.innerWidth <= 600) {
+/* =====================================================
+   STATO INIZIALE — HOME
+===================================================== */
 
-/* Crea lo stato iniziale della HOME */
 history.replaceState(
   { home: true },
   "",
   window.location.pathname
 );
-
-}
 
 
 /* =====================================================
@@ -2049,7 +2186,69 @@ history.replaceState(
 
 window.addEventListener("popstate", function (event) {
 
-if (window.innerWidth > 600) return;
+
+  /* =========================================
+   DA PROGETTO → HOME
+========================================= */
+
+if (!event.state || event.state.home) {
+
+document
+  .querySelectorAll(".project-links-visible")
+  .forEach(function (links) {
+    links.remove();
+  });
+
+projects.forEach(function (project) {
+
+  project.classList.remove("open");
+
+  if (window.innerWidth > 600) {
+    project.style.display = "none";
+  } else {
+    project.style.display = "";
+  }
+
+});
+
+homeNumbers.forEach(function (number) {
+
+number.classList.remove("active");
+number.classList.remove("hover-active");
+number.classList.remove("press-active");
+
+});
+
+document.querySelectorAll(".home-number").forEach(function (number) {
+  number.style.removeProperty("transform");
+});
+
+
+document.body.classList.remove("project-layer-open");
+document.body.classList.remove("home-view-project");
+document.body.classList.remove("about-open");
+document.body.classList.remove("mobile-about-open");
+
+document.body.classList.add("home-view");
+resetHomePreviews();
+
+console.log("HOME RESET");
+console.log("body:", document.body.className);
+console.log("numbers:", document.querySelector(".home-numbers")?.getAttribute("style"));
+console.log("preview:", document.querySelector(".home-preview")?.getAttribute("style"));
+
+window.scrollTo({
+  top: 0,
+  left: 0,
+  behavior: "auto"
+});
+
+if (site) {
+  site.scrollTop = 0;
+}
+
+return;
+}
 
 
 /* =========================================
@@ -2083,66 +2282,6 @@ if (event.state && event.state.about) {
   return;
 }
 
-
-/* =========================================
-   DA ABOUT → HOME
-========================================= */
-
-if (!event.state || event.state.home) {
-
-  document
-  .querySelectorAll(".project-links-visible")
-  .forEach(function (links) {
-    links.remove();
-  });
-
-  /* Chiude ABOUT */
-  document.body.classList.remove(
-    "mobile-about-open"
-  );
-
-  /* Torna alla HOME */
-  document.body.classList.add(
-    "home-view"
-  );
-
-  /* Chiude completamente tutti i progetti */
-  projects.forEach(function (project) {
-
-    project.classList.remove("open");
-
-    project.style.display = "none";
-
-  });
-
-  /* Rimuove eventuali numeri attivi */
-  homeNumbers.forEach(function (number) {
-
-    number.classList.remove("active");
-
-  });
-
-  /* Chiude il layer progetto */
-  document.body.classList.remove(
-    "project-layer-open"
-  );
-
-  document.body.classList.remove(
-    "home-view-project"
-  );
-
-  /* Torna in cima */
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "instant"
-  });
-
-  if (site) {
-    site.scrollTop = 0;
-  }
-
-}
 
 });
 
@@ -2363,6 +2502,14 @@ if (!event.target.closest(".about-content")) {
     
     });
 
+    window.addEventListener("resize", function () {
+
+if (window.innerWidth > 600) {
+  updateHomeNumbersPosition()
+}
+
+});
+
     /* =====================================================
    MOBILE — SCROLL TRA I PROGETTI
 ===================================================== */
@@ -2432,6 +2579,7 @@ if (mobileProjects.length && mobileNumbers.length) {
 }
 
 }
+
     </script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {

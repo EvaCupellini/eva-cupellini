@@ -24,15 +24,15 @@ body {
 }
 
 @font-face {
-  font-family: "GT Alpina";
-  src: url("fonts/GT-Sectra-Regular-Trial") format("woff2");
+  font-family: "GT Sectra";
+  src: url("font/Castoro-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Maru";
-  src: url("fonts/GT-Maru-Regular-Trial.woff2") format("woff2");
+  font-family: "Standard";
+  src: url("font/Ronzino-Medium.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -92,7 +92,7 @@ body {
   display: inline-block;
   color: #acacac;
 
-  font-family: "GT Sectra", serif;
+  font-family: "Standard", sans-serif;
 
   font-size: 32px;
   line-height: 1;
@@ -1131,7 +1131,7 @@ body {
 
 .about-block h2 {
   margin: 0 0 18px 0;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Standard", sans-serif;
   font-size: 15px;
   font-weight: normal;
   line-height: 1.28;
@@ -1875,7 +1875,7 @@ body {
 
     white-space: nowrap !important;
 
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-family: "GT Sectra", sans-serif;
     font-size: 12px !important;
     font-weight: 400 !important;
     line-height: 1.2 !important;
@@ -3093,7 +3093,7 @@ body.home-view.project-layer-open
   color: #acacac;
   text-decoration: none;
 
-  font-family: "Times New Roman", serif;
+  font-family: "Standard", sans-serif;
   font-size: 13px;
 }
 
@@ -3806,11 +3806,11 @@ body.home-view.project-layer-open .home-numbers::after {
 
 }
 
-@media screen and (max-width: 600px) {
 
   @media screen and (max-width: 600px) {
 
     .project.open .project-details .detail-label {
+      font-family: "GT Sectra", sans-serif !important;
       position: relative !important;
       display: inline-block !important;
       color: #acacac !important;
@@ -3842,7 +3842,7 @@ body.home-view.project-layer-open .home-numbers::after {
   
   }
 
-}
+
 
 
 @media screen and (max-width: 600px) {
@@ -4341,6 +4341,7 @@ body.home-view .home-numbers > div.press-active .preview-color {
 }
 
 }
+
 
 /* =========================================
    MOBILE — PREVIEW AL PRESS
