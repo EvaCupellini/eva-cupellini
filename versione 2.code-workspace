@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../versione 2"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "eva-cupellini"
+	}
+}
