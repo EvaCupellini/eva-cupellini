@@ -1714,14 +1714,6 @@ body {
    PROJECT YEAR / LINKS
 ================================ */
 
-.project-year {
-  cursor: pointer;
-}
-
-.project-year:hover {
-  color: #8b2ca1;
-}
-
 
 /* =====================================================
    INTRO
@@ -4221,7 +4213,7 @@ body.project-layer-open .project-links-visible {
     width: 650px;
     height: 400px;
     left: 50%;
-    top: 80px;
+    top: 68px;
     transform: translateX(-50%) translateY(-20px);
   }
   
