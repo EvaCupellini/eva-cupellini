@@ -574,13 +574,13 @@ The visual language embraces a handmade, tactile, and intentionally imperfect ae
               <img data-src="media/kuchidoke-06.jpg">
             </div>
             <div class="image-placeholder kuchidoke-07-container">
+              <img data-src="media/kuchidoke-09.webp">
+            </div>
+            <div class="image-placeholder kuchidoke-08-container">
               <img data-src="media/kuchidoke-07-optimized.webp">
             </div>
-            <div class="image-placeholder">
-              <img data-src="media/kuchidoke-08.jpg">
-            </div>
             <div class="image-placeholder kuchidoke-09-container">
-              <img data-src="media/kuchidoke-09.jpg">
+              <img data-src="media/kuchidoke-08.jpg">
             </div>
             <div class="image-placeholder">
               <img data-src="media/kuchidoke-10.jpg">
@@ -664,7 +664,7 @@ I documented the process through photography and created a type specimen explain
             </div>
             <div class="image-placeholder">
                 <video autoplay muted loop playsinline>
-                  <source data-src="media/kirinoki - 11.mp4" type="video/mp4">
+                  <source data-src="media/kirinoki-11.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="image-placeholder kirinoki-12-container">
@@ -672,7 +672,7 @@ I documented the process through photography and created a type specimen explain
             </div>
             <div class="image-placeholder kirinoki-13-container">
                 <video class="hover-sound" autoplay muted loop playsinline>
-                  <source data-src="media/kirinoki - 13.mp4" type="video/mp4">
+                  <source data-src="media/kirinoki-13.mp4" type="video/mp4">
               </video>
             </div>
           </div>
@@ -1107,8 +1107,8 @@ Packaging, receipts, and informative content reveal the hidden consequences of e
             <img src="media/photo-17.jpg" alt="">
             <img src="media/photo-18.jpg" alt="">
             <img src="media/photo-19.jpg" alt="">
-            <img src="media/photo-20-optimized.webp" alt="">
-            <img src="media/photo-21-optimized.webp" alt="">
+            <img src="media/photo-20.webp" alt="">
+            <img src="media/photo-21.webp" alt="">
         
           </div>
         
@@ -1956,6 +1956,32 @@ document
             event.preventDefault();
             event.stopPropagation();
 
+            if (typeof window.closePhotography === "function") {
+      window.closePhotography();
+    }
+            const photographyGallery =
+  document.querySelector(".photography-gallery");
+
+const photographyTrigger =
+  document.querySelector(".photography-trigger");
+
+if (document.body.classList.contains("photography-open")) {
+
+  document.body.classList.remove("photography-open");
+
+  if (photographyTrigger) {
+    photographyTrigger.classList.remove("active");
+  }
+
+  if (
+    photographyGallery &&
+    originalGalleryParent &&
+    photographyGallery.parentElement === document.body
+  ) {
+    originalGalleryParent.appendChild(photographyGallery);
+  }
+}
+
             /* CHIUDE IL LINK POPUP */
             const popup = document.querySelector(".link-popup");
 
@@ -2039,6 +2065,10 @@ projectAboutLink.addEventListener(
     event.preventDefault();
     event.stopPropagation();
 
+    if (typeof window.closePhotography === "function") {
+  window.closePhotography();
+}
+
 
     /* =========================
        SALVA IL PROGETTO CORRENTE
@@ -2108,22 +2138,35 @@ projectAboutLink.addEventListener(
 
 
     /* =========================
-       DESKTOP
-    ========================= */
+   DESKTOP
+========================= */
 
-    document.body.classList.add(
-      "about-open"
-    );
+if (document.body.classList.contains("about-open")) {
 
+document.body.classList.remove("about-open");
 
-    history.pushState(
-      {
-        about: true,
-        fromProject: currentProjectIndex
-      },
-      "",
-      "#about"
-    );
+} else {
+
+document.body.classList.add("about-open");
+
+history.pushState(
+  {
+    about: true,
+    fromProject: currentProjectIndex
+  },
+  "",
+  "#about"
+);
+
+}
+
+if (aboutColumn) {
+aboutColumn.scrollTop = 0;
+}
+
+if (aboutContent) {
+aboutContent.scrollTop = 0;
+}
 
 
     if (aboutColumn) {
@@ -2146,45 +2189,43 @@ projectAboutLink.addEventListener(
 
 if (aboutLink) {
 
-aboutLink.addEventListener(
-  "click",
-  function (event) {
+  aboutLink.addEventListener(
+    "click",
+    function (event) {
 
-    event.preventDefault();
-    event.stopPropagation();
+      event.preventDefault();
+      event.stopPropagation();
 
+      /* MOBILE */
 
-    /* MOBILE */
+      if (window.innerWidth <= 600) {
 
-    if (window.innerWidth <= 600) {
+        document.body.classList.remove(
+          "mobile-about-open"
+        );
+
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "instant"
+        });
+
+        return;
+
+      }
+
+      /* DESKTOP */
 
       document.body.classList.remove(
-        "mobile-about-open"
+        "about-open"
       );
 
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "instant"
-      });
-
-      return;
+      if (aboutContent) {
+        aboutContent.scrollTop = 0;
+      }
 
     }
-
-
-    /* DESKTOP */
-
-    document.body.classList.remove(
-      "about-open"
-    );
-
-    if (aboutContent) {
-      aboutContent.scrollTop = 0;
-    }
-
-  }
-);
+  );
 
 }
 
@@ -2319,15 +2360,20 @@ if (event.state && event.state.about) {
 
 aboutColumn.addEventListener("click", function (event) {
 
-if (event.target.closest(".photography-gallery")) {
-  return;
-}
+  if (!event.target.closest(".about-content")) {
 
-if (!event.target.closest(".about-content")) {
-  event.preventDefault();
-  event.stopPropagation();
-  document.body.classList.remove("about-open");
-}
+    event.preventDefault();
+    event.stopPropagation();
+
+    // chiude ABOUT
+    document.body.classList.remove("about-open");
+
+    // chiude anche PHOTOGRAPHY
+    if (typeof window.closePhotography === "function") {
+      window.closePhotography();
+    }
+
+  }
 
 });
 
@@ -2610,6 +2656,19 @@ if (mobileProjects.length && mobileNumbers.length) {
     const trigger = document.querySelector(".photography-trigger");
     const gallery = document.querySelector(".photography-gallery");
     const images = document.querySelector(".photography-images");
+    const originalGalleryParent = gallery.parentElement;
+    window.closePhotography = function () {
+
+document.body.classList.remove("photography-open");
+
+trigger.classList.remove("active");
+
+if (
+  gallery.parentElement === document.body
+) {
+  originalGalleryParent.appendChild(gallery);
+}
+};
   
     if (!trigger || !gallery || !images) {
       console.log("PHOTOGRAPHY: elemento mancante");
@@ -2618,6 +2677,9 @@ if (mobileProjects.length && mobileNumbers.length) {
   
     const buttons = gallery.querySelectorAll(".photo-view");
     const photos = images.querySelectorAll("img");
+    gallery.addEventListener("click", function (event) {
+  event.stopPropagation();
+});
   
   
     /* =========================
@@ -2630,12 +2692,22 @@ trigger.addEventListener("click", function (event) {
 
   if (document.body.classList.contains("photography-open")) {
 
-    // CHIUDI PHOTOGRAPHY
-    document.body.classList.remove("photography-open");
-    trigger.classList.remove("active");
+// CHIUDI PHOTOGRAPHY
+document.body.classList.remove("photography-open");
+trigger.classList.remove("active");
 
-    return;
-  }
+/* RIPORTA LA GALLERY NEL SUO POSTO ORIGINALE */
+originalGalleryParent.appendChild(gallery);
+
+return;
+}
+
+    /* PORTA LA GALLERY FUORI DAL PROJECT LAYER */
+    document.body.appendChild(gallery);
+
+gallery.addEventListener("click", function (event) {
+  event.stopPropagation();
+});
 
   // APRI PHOTOGRAPHY
   document.body.classList.add("photography-open");
@@ -2768,6 +2840,7 @@ setActive("full");
     });
   
   });
+  
   
   </script>
 
