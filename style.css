@@ -4429,6 +4429,20 @@ body.home-view .home-numbers > div:active .preview-color {
 }
 
 /* =========================================
+   HOVER 2 SECONDI → COLORE
+========================================= */
+
+body.home-view .home-numbers > div.preview-color-active .preview-bw {
+  opacity: 0;
+  visibility: hidden;
+}
+
+body.home-view .home-numbers > div.preview-color-active .preview-color {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* =========================================
    QUANDO IL PROGETTO È APERTO
    LA PREVIEW DEVE SPARIRE COMPLETAMENTE
 ========================================= */
@@ -4445,18 +4459,20 @@ body.project-layer-open .home-numbers > div .home-preview {
   display: none !important;
 }
 
+
 /* =========================================
-   COLONNA PREMUTA → COLORE
+   HOVER 2 SECONDI → PREVIEW COLORATA
 ========================================= */
 
-body.home-view .home-numbers > div.press-active .preview-bw {
-  opacity: 0;
-  visibility: hidden;
+body.home-view .home-numbers > div.preview-color-active .preview-bw {
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 
-body.home-view .home-numbers > div.press-active .preview-color {
-  opacity: 1;
-  visibility: visible;
+body.home-view .home-numbers > div.preview-color-active .preview-color {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateX(-50%) translateY(0);
 }
 
 }
@@ -4584,6 +4600,18 @@ body.home-view .home-numbers > div:nth-child(9) .home-preview {
   }
 
 }
+
+}
+@media screen and (min-width: 601px) {
+
+  .home-numbers .preview-color {
+    opacity: 0 !important;
+    transition: opacity 0.4s ease;
+  }
+
+  .home-numbers .preview-color.show-color {
+    opacity: 1 !important;
+  }
 
 }
 

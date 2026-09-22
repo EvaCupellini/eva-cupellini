@@ -1267,57 +1267,93 @@ const hitAreaElements =
 
 hitAreaElements.forEach(function (area, index) {
 
+let previewColorTimer = null;
+
 area.addEventListener("mouseenter", function () {
 
+  /* reset di tutte le colonne */
   homeNumbers.forEach(function (number) {
     number.classList.remove("hover-active");
     number.classList.remove("press-active");
+    number.classList.remove("preview-color-active");
   });
 
+  /* preview B/N immediata */
   homeNumbers[index].classList.add("hover-active");
 
+  /* parte il timer dei 2 secondi */
+  previewColorTimer = setTimeout(function () {
+
+    /* controlla che il mouse sia ancora su QUESTA colonna */
+    if (homeNumbers[index].classList.contains("hover-active")) {
+      homeNumbers[index].classList.add("preview-color-active");
+    }
+
+  }, 2000);
+
 });
 
-area.addEventListener("mousedown", function () {
-
-  homeNumbers[index].classList.add("press-active");
-
-});
 
 area.addEventListener("mouseleave", function () {
 
+  /* annulla il timer */
+  clearTimeout(previewColorTimer);
+  previewColorTimer = null;
+
+  /* torna alla preview B/N */
   homeNumbers[index].classList.remove("hover-active");
   homeNumbers[index].classList.remove("press-active");
+  homeNumbers[index].classList.remove("preview-color-active");
 
 });
+
+
+/* CLICK / PRESSIONE → COLORE IMMEDIATO */
+area.addEventListener("mousedown", function () {
+
+  clearTimeout(previewColorTimer);
+  previewColorTimer = null;
+
+  homeNumbers[index].classList.add("press-active");
+  homeNumbers[index].classList.add("preview-color-active");
+
+});
+
 
 area.addEventListener("touchstart", function () {
 
-if (window.innerWidth <= 600) {
+  if (window.innerWidth <= 600) {
 
-  homeNumbers[index].classList.add("press-active");
+    homeNumbers[index].classList.add("press-active");
+    homeNumbers[index].classList.add("preview-color-active");
 
-}
+  }
 
 }, { passive: true });
 
+
 area.addEventListener("touchend", function () {
 
-if (window.innerWidth <= 600) {
+  if (window.innerWidth <= 600) {
 
-  homeNumbers[index].classList.remove("press-active");
+    homeNumbers[index].classList.remove("press-active");
+    homeNumbers[index].classList.remove("preview-color-active");
 
-}
+  }
 
 });
 
+
 area.addEventListener("touchcancel", function () {
 
-if (window.innerWidth <= 600) {
+  if (window.innerWidth <= 600) {
 
-  homeNumbers[index].classList.remove("press-active");
+    homeNumbers[index].classList.remove("press-active");
+    homeNumbers[index].classList.remove("preview-color-active");
 
-}
+  }
+
+});
 
 });
 
@@ -1355,7 +1391,6 @@ number.addEventListener("touchcancel", function () {
 
 });
 
-});
 
 
 
@@ -1373,7 +1408,18 @@ area.addEventListener("click", function (event) {
     return;
   }
 
-  homeNumbers[index].click();
+  const number = homeNumbers[index];
+
+  if (!number) return;
+
+  /* APRE IL PROGETTO COME SE AVESSI CLICCATO SUL NUMERO */
+  number.dispatchEvent(
+    new MouseEvent("click", {
+      bubbles: true,
+      cancelable: true,
+      view: window
+    })
+  );
 
 });
 
@@ -2358,24 +2404,28 @@ if (event.state && event.state.about) {
 
 
 
-aboutColumn.addEventListener("click", function (event) {
+if (aboutColumn) {
 
-  if (!event.target.closest(".about-content")) {
+  aboutColumn.addEventListener("click", function (event) {
 
-    event.preventDefault();
-    event.stopPropagation();
+    if (!event.target.closest(".about-content")) {
 
-    // chiude ABOUT
-    document.body.classList.remove("about-open");
+      event.preventDefault();
+      event.stopPropagation();
 
-    // chiude anche PHOTOGRAPHY
-    if (typeof window.closePhotography === "function") {
-      window.closePhotography();
+      // chiude ABOUT
+      document.body.classList.remove("about-open");
+
+      // chiude anche PHOTOGRAPHY
+      if (typeof window.closePhotography === "function") {
+        window.closePhotography();
+      }
+
     }
 
-  }
+  });
 
-});
+}
 
 
 
@@ -2569,7 +2619,7 @@ aboutColumn.addEventListener("click", function (event) {
       });
     
     
-    });
+    
 
     window.addEventListener("resize", function () {
 
@@ -2648,6 +2698,9 @@ if (mobileProjects.length && mobileNumbers.length) {
 }
 
 }
+
+});
+
 
     </script>
 <script>
