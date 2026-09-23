@@ -4606,7 +4606,7 @@ body.home-view .home-numbers > div:nth-child(9) .home-preview {
 
   .home-numbers .preview-color {
     opacity: 0 !important;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.01s ease;
   }
 
   .home-numbers .preview-color.show-color {
