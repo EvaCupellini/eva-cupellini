@@ -1240,6 +1240,54 @@ function updateHomeNumbersPosition() {
       ];
 
       /* =========================================
+   PROJECT MEDIA — LAZY LOADING
+========================================= */
+
+const mediaObserver = new IntersectionObserver(function (entries) {
+
+entries.forEach(function (entry) {
+
+  if (!entry.isIntersecting) return;
+
+  const media = entry.target;
+
+  /* IMAGE */
+  if (media.tagName === "IMG") {
+
+    if (media.dataset.src) {
+      media.src = media.dataset.src;
+      media.removeAttribute("data-src");
+    }
+
+  }
+
+  /* VIDEO */
+  if (media.tagName === "VIDEO") {
+
+    const source = media.querySelector("source[data-src]");
+
+    if (source) {
+      source.src = source.dataset.src;
+      source.removeAttribute("data-src");
+
+      media.load();
+
+      if (media.hasAttribute("autoplay")) {
+        media.play().catch(function () {});
+      }
+    }
+
+  }
+
+  mediaObserver.unobserve(media);
+
+});
+
+}, {
+rootMargin: "800px 0px"
+});
+
+      /* =========================================
    COLONNE INVISIBILI
 ========================================= */
 
@@ -1465,35 +1513,20 @@ homeNumbers.forEach(function (num) {
 });
 
 selectedProject.classList.add("open");
-// LAZY LOAD PROJECT MEDIA
-
-// Immagini
-selectedProject.querySelectorAll("img[data-src]").forEach(function (img) {
-  img.src = img.dataset.src;
-});
-
-// Video
-selectedProject.querySelectorAll("video").forEach(function (video) {
-
-const source = video.querySelector("source[data-src]");
-
-if (source) {
-  source.src = source.dataset.src;
-}
-
-video.load();
-
-if (video.hasAttribute("autoplay")) {
-  video.play().catch(function () {});
-}
-
-});
 
 if (window.innerWidth > 600) {
   selectedProject.style.display = "block";
 } else {
   selectedProject.style.display = "";
 }
+
+/* Observe project media */
+
+selectedProject
+  .querySelectorAll("img[data-src], video")
+  .forEach(function (media) {
+    mediaObserver.observe(media);
+  });
 
 document.querySelectorAll(".home-numbers > div").forEach(function (item) {
   item.classList.remove("open-project-number");

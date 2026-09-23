@@ -1240,6 +1240,54 @@ function updateHomeNumbersPosition() {
       ];
 
       /* =========================================
+   PROJECT MEDIA — LAZY LOADING
+========================================= */
+
+const mediaObserver = new IntersectionObserver(function (entries) {
+
+entries.forEach(function (entry) {
+
+  if (!entry.isIntersecting) return;
+
+  const media = entry.target;
+
+  /* IMAGE */
+  if (media.tagName === "IMG") {
+
+    if (media.dataset.src) {
+      media.src = media.dataset.src;
+      media.removeAttribute("data-src");
+    }
+
+  }
+
+  /* VIDEO */
+  if (media.tagName === "VIDEO") {
+
+    const source = media.querySelector("source[data-src]");
+
+    if (source) {
+      source.src = source.dataset.src;
+      source.removeAttribute("data-src");
+
+      media.load();
+
+      if (media.hasAttribute("autoplay")) {
+        media.play().catch(function () {});
+      }
+    }
+
+  }
+
+  mediaObserver.unobserve(media);
+
+});
+
+}, {
+rootMargin: "800px 0px"
+});
+
+      /* =========================================
    COLONNE INVISIBILI
 ========================================= */
 
