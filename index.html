@@ -225,7 +225,7 @@ The spiral, which defines the magazine’s visual language, symbolises the cycli
 
           <div class="project-images">
             <div class="image-placeholder coevo-01-container">
-              <img data-src="media/coevo-01.png">
+              <img src="media/coevo-01.webp">
             </div>
             <div class="image-placeholder coevo-02-container">
               <img data-src="media/coevo-02.jpg">
@@ -419,7 +419,7 @@ Rather than offering a definitive answer about the future, Coevo brings together
               <img data-src="media/Angelica-12.jpg">
             </div>
             <div class="image-placeholder angelica-13-container">
-              <img data-src="media/Angelica-13.jpg">
+              <img src="media/Angelica-13.webp">
             </div>
           </div>
           <div class="project-information">
@@ -1284,7 +1284,9 @@ entries.forEach(function (entry) {
 });
 
 }, {
-rootMargin: "800px 0px"
+root: null,
+rootMargin: "1200px 0px",
+threshold: 0
 });
 
       /* =========================================
